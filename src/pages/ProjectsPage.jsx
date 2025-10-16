@@ -1,7 +1,7 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import ProjectCard from "../components/ProjectCard";
-import { projects } from "../data/PROJECTS";
+import { projects } from "../data/projects";
 import { ArrowLeft } from "lucide-react";
 import ScrollToTop from "../components/ScrollToTop";
 import Footer from "../components/Footer";
