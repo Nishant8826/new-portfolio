@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
-import { projects } from "../data/PROJECTS";
+import { projects } from "../data/projects";
 
 export default function Projects() {
-  const featured = projects.slice(0, 3); // top 3 featured
+  const featured = projects.slice(0, 3); 
 
   return (
     <section
