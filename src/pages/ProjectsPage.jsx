@@ -1,119 +1,149 @@
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import ProjectCard from "../components/ProjectCard";
 import { projects } from "../data/projects";
-import { ArrowLeft } from "lucide-react";
-import ScrollToTop from "../components/ScrollToTop";
+import { ArrowLeft, Filter, Sparkles } from "lucide-react";
 import Footer from "../components/Footer";
-import { useEffect } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 export default function ProjectsPage() {
     const navigate = useNavigate();
-
     const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 120,
-        damping: 20,
-        restDelta: 0.001,
-    });
+    const scaleX = useSpring(scrollYProgress, { stiffness: 200, damping: 25 });
 
+    const [selectedTags, setSelectedTags] = useState([]);
+    const [showFilters, setShowFilters] = useState(true);
+    const [hoverGlow, setHoverGlow] = useState(false);
+
+    // Scroll to top on page load
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, []);
+
+    const tags = useMemo(() => {
+        const allTags = projects.flatMap((p) => p.tags || []);
+        return Array.from(new Set(allTags));
+    }, []);
+
+    const toggleTag = (tag) => {
+        setSelectedTags((prev) =>
+            prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+        );
+    };
+
+    const filteredProjects = projects.filter((p) =>
+        selectedTags.length === 0 ? true : selectedTags.some((tag) => p.tags?.includes(tag))
+    );
 
     return (
         <motion.section
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative min-h-screen pt-20 overflow-hidden bg-gradient-to-br from-indigo-50 via-purple-50 to-white"
+            className="relative min-h-screen pt-6 overflow-hidden bg-gradient-to-br from-indigo-100 via-white to-purple-200"
         >
-
-            {/* 🔵 Scroll Progress Bar */}
+            {/* Scroll Glow Bar */}
             <motion.div
                 style={{ scaleX }}
-                className="fixed top-0 left-0 right-0 h-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 origin-left z-50"
-            />
-            {/* Animated background gradient blobs */}
-            <motion.div
-                className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"
-                animate={{ x: [0, 30, 0], y: [0, 20, 0] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-                className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"
-                animate={{ x: [0, -30, 0], y: [0, -20, 0] }}
-                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+                className="fixed top-0 left-0 right-0 h-2 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 shadow-2xl shadow-purple-400/60 origin-left z-50 rounded-b-lg"
             />
 
-            {/* Container */}
-            <div className="relative z-10 max-w-6xl mx-auto px-6">
-                {/* Back Button */}
-                <motion.button
-                    onClick={() => navigate(-1)}
-                    className="fixed top-6 left-6 flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-md border border-indigo-200 bg-white/40 hover:bg-white/60 cursor-pointer text-indigo-700 shadow-lg transition-all duration-300"
-                    whileHover={{ scale: 1.1, x: 2 }}
-                    whileTap={{ scale: 0.95 }}
-                >
-                    <ArrowLeft size={20} />
-                    <span className="font-medium hidden sm:inline">Back</span>
-                </motion.button>
+            {/* Animated Ambient Blobs */}
+            <motion.div
+                className="absolute w-96 h-96 bg-pink-300/30 rounded-full blur-3xl top-20 -left-40"
+                animate={{ y: [0, 30, 0] }}
+                transition={{ repeat: Infinity, duration: 8 }}
+            />
+            <motion.div
+                className="absolute w-96 h-96 bg-indigo-300/30 rounded-full blur-3xl top-1/2 -right-40"
+                animate={{ y: [0, -30, 0] }}
+                transition={{ repeat: Infinity, duration: 8 }}
+            />
 
-                {/* Gradient Overlay behind title */}
-                <div className="relative text-center mb-20">
-                    <motion.div
-                        className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-24 bg-gradient-to-r from-indigo-300/20 via-purple-300/20 to-pink-300/20 blur-2xl"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                    />
+            <div className="relative z-10 max-w-6xl mx-auto px-2 flex flex-col gap-6">
+                {/* Sticky Header */}
+                <motion.div className="flex items-center justify-between bg-white/60 backdrop-blur-xl border border-white/50 rounded-3xl shadow-2xl p-4 sticky top-4 z-20">
+                    <motion.button
+                        onClick={() => navigate(-1)}
+                        whileHover={{ scale: 1.1 }}
+                        className="flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-200 bg-white hover:bg-indigo-50 text-indigo-700 shadow-sm"
+                    >
+                        <ArrowLeft size={20} />
+                    </motion.button>
 
                     <motion.h1
-                        className="relative text-5xl sm:text-6xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent leading-[1.5]"
-                        initial={{ opacity: 0, y: 24 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7 }}
+                        className="text-4xl font-extrabold bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent flex items-center gap-2 drop-shadow-md"
+                        animate={{ scale: hoverGlow ? 1.05 : 1 }}
+                        onHoverStart={() => setHoverGlow(true)}
+                        onHoverEnd={() => setHoverGlow(false)}
                     >
+                        <Sparkles size={26} className="text-yellow-400" />
                         All Projects
                     </motion.h1>
-                </div>
 
-                {/* Project Grid */}
-                <motion.div
-                    className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 perspective-1000"
-                    initial="hidden"
-                    animate="visible"
-                    variants={{
-                        hidden: {},
-                        visible: {
-                            transition: {
-                                staggerChildren: 0.1,
-                            },
-                        },
-                    }}
-                >
-                    {projects.map((p, i) => (
+                    <motion.button
+                        onClick={() => setShowFilters(!showFilters)}
+                        whileHover={{ scale: 1.1 }}
+                        className="flex items-center gap-2 px-4 py-2 rounded-full border border-purple-200 bg-white hover:bg-purple-50 text-purple-700 shadow-sm"
+                    >
+                        <Filter size={18} />
+                        {showFilters ? "Hide" : "Show"}
+                    </motion.button>
+                </motion.div>
+
+                {/* Filters */}
+                <AnimatePresence>
+                    {showFilters && (
                         <motion.div
-                            key={i}
-                            variants={{
-                                hidden: { opacity: 0, y: 40, rotateX: 10 },
-                                visible: { opacity: 1, y: 0, rotateX: 0 },
-                            }}
-                            transition={{ duration: 0.6, delay: i * 0.05 }}
+                            initial={{ opacity: 0, y: -15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -15 }}
+                            className="bg-white/60 backdrop-blur-xl border border-purple-100 rounded-2xl shadow-md p-4"
+                        >
+                            <motion.div layout className="flex flex-wrap gap-2 pt-2">
+                                {tags.map((tag) => {
+                                    const active = selectedTags.includes(tag);
+                                    return (
+                                        <motion.button
+                                            key={tag}
+                                            onClick={() => toggleTag(tag)}
+                                            whileHover={{ scale: 1.06 }}
+                                            className={`px-3 py-1 text-xs rounded-full ${active
+                                                ? "bg-purple-600 text-white shadow-md shadow-purple-300"
+                                                : "bg-white border border-purple-200 hover:bg-purple-50 text-purple-600"
+                                                }`}
+                                        >
+                                            {tag}
+                                        </motion.button>
+                                    );
+                                })}
+                            </motion.div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* Projects Grid */}
+                <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 py-8">
+                    {filteredProjects.map((p) => (
+                        <motion.div
+                            key={p.id}
+                            layout
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
                             whileHover={{
-                                scale: 1.03,
+                                scale: 1.07,
                                 rotateX: 3,
                                 rotateY: -3,
-                                transition: { duration: 0.2 },
+                                shadow: "0px 0px 20px rgba(150,0,250,0.4)",
                             }}
                         >
-                            <ProjectCard project={p} index={i} />
+                            <ProjectCard project={p} />
                         </motion.div>
                     ))}
                 </motion.div>
-                <ScrollToTop />
+
+                <Footer />
             </div>
-            <Footer />
         </motion.section>
     );
 }
