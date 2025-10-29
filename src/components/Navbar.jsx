@@ -37,7 +37,7 @@ export default function Navbar({ resumeUrl }) {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [lastScrollY]);
 
-    const navLinks = ["Home", "About", "Skills", "Projects", "Contact"];
+    const navLinks = ["Home", "About", "Experience", "Skills", "Projects", "Contact"];
 
     return (
         <>

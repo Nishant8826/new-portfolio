@@ -15,7 +15,7 @@ export default function Footer() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="relative py-12 mt-20 bg-gradient-to-b from-white via-indigo-50/60 to-pink-50/40 backdrop-blur-sm border-t border-indigo-100"
+      className="relative py-12 bg-gradient-to-b from-white via-indigo-50/60 to-pink-50/40 backdrop-blur-sm border-t border-indigo-100"
     >
       {/* Soft animated background shimmer */}
       <motion.div

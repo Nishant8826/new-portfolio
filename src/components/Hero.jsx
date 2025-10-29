@@ -28,7 +28,8 @@ export default function Hero() {
             style={{ opacity: fade }}
             id="home"
             className="relative min-h-screen flex flex-col-reverse md:flex-row items-center justify-center overflow-hidden 
-                 bg-gradient-to-b from-white via-indigo-50 to-purple-50 px-10 md:px-28"
+             bg-gradient-to-b from-white via-indigo-50 to-purple-50 
+             px-6 sm:px-10 md:px-28 pt-24 md:pt-0"
         >
             {/* === LEFT CONTENT === */}
             <div className="relative z-10 flex-1 text-center md:text-left space-y-6 mt-10 md:mt-0">

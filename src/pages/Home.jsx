@@ -9,6 +9,7 @@ import ScrollToTop from "../components/ScrollToTop";
 import { projects } from "../data/projects";
 import Contact from "../components/Contact";
 import resumeUrl from '../assets/Nishant-Rathore-SD2.pdf'
+import ExperienceSection from "../components/ExperienceSection";
 
 export default function Home() {
     useEffect(() => {
@@ -22,6 +23,7 @@ export default function Home() {
             <main>
                 <Hero />
                 <About />
+                <ExperienceSection />
                 <Skills />
                 <Projects items={projects} />
                 <Contact />
