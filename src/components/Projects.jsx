@@ -9,16 +9,21 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative py-28 bg-gradient-to-b from-white via-indigo-50/40 to-purple-50/60 overflow-hidden"
+      className="relative py-28 overflow-hidden"
+      style={{
+        background: "linear-gradient(to bottom, var(--bg), var(--bg-soft), var(--bg))",
+      }}
     >
       {/* Soft animated background orbs */}
       <motion.div
-        className="absolute top-20 left-1/4 w-72 h-72 bg-indigo-400/20 rounded-full blur-[120px]"
+        className="absolute top-20 left-1/4 w-72 h-72 rounded-full blur-[120px]"
+        style={{ backgroundColor: "var(--primary-glow)" }}
         animate={{ y: [0, 20, 0], opacity: [0.5, 0.7, 0.5] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-10 right-1/4 w-80 h-80 bg-pink-400/25 rounded-full blur-[140px]"
+        className="absolute bottom-10 right-1/4 w-80 h-80 rounded-full blur-[140px]"
+        style={{ backgroundColor: "var(--secondary-glow)" }}
         animate={{ y: [0, -25, 0], opacity: [0.4, 0.6, 0.4] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -26,7 +31,11 @@ export default function Projects() {
       {/* Header */}
       <div className="relative text-center mb-20">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-600 bg-clip-text text-transparent drop-shadow-sm"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold bg-clip-text text-transparent drop-shadow-sm"
+          style={{
+            backgroundImage:
+              "linear-gradient(90deg, var(--primary), var(--secondary), var(--accent-2))",
+          }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -36,7 +45,8 @@ export default function Projects() {
         </motion.h2>
 
         <motion.p
-          className="text-slate-600 mt-5 max-w-2xl mx-auto text-lg"
+          className="mt-5 max-w-2xl mx-auto text-lg"
+          style={{ color: "var(--text-muted)" }}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -47,7 +57,11 @@ export default function Projects() {
 
         {/* Subtle gradient underline */}
         <motion.div
-          className="mx-auto mt-6 w-24 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full"
+          className="mx-auto mt-6 w-24 h-1 rounded-full"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, var(--primary), var(--secondary), var(--accent-2))",
+          }}
           initial={{ width: 0 }}
           whileInView={{ width: 96 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -87,14 +101,26 @@ export default function Projects() {
       >
         <Link
           to="/projects"
-          className="inline-block bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white font-semibold px-10 py-3.5 rounded-full shadow-lg shadow-purple-300/30 hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300"
+          className="inline-block font-semibold px-10 py-3.5 rounded-full shadow-lg transition-all duration-300"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, var(--primary), var(--secondary), var(--accent-2))",
+            color: "var(--text-on-primary)",
+            boxShadow: "0 10px 20px var(--accent-shadow)",
+          }}
         >
           Show All Projects →
         </Link>
       </motion.div>
 
       {/* Floating light overlay for premium depth */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_30%_40%,rgba(255,255,255,0.3)_0%,transparent_50%)]" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at 30% 40%, rgba(var(--light-overlay-rgb), 0.3) 0%, transparent 50%)",
+        }}
+      />
     </section>
   );
 }

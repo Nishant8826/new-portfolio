@@ -5,6 +5,7 @@ import { projects } from "../data/projects";
 import { ArrowLeft, Filter, Sparkles } from "lucide-react";
 import Footer from "../components/Footer";
 import { useEffect, useState, useMemo } from "react";
+import ThemeSelector from "../components/ThemeSelector";
 
 export default function ProjectsPage() {
     const navigate = useNavigate();
@@ -40,51 +41,81 @@ export default function ProjectsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative min-h-screen pt-6 overflow-hidden bg-gradient-to-br from-indigo-100 via-white to-purple-200"
+            className="relative min-h-screen pt-6 overflow-hidden"
+            style={{
+                background: `linear-gradient(135deg, var(--bg-soft) 0%, var(--primary)/10 50%, var(--secondary)/20 100%)`,
+            }}
         >
             {/* Scroll Glow Bar */}
             <motion.div
-                style={{ scaleX }}
-                className="fixed top-0 left-0 right-0 h-2 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 shadow-2xl shadow-purple-400/60 origin-left z-50 rounded-b-lg"
+                className="fixed top-0 left-0 right-0 h-2 rounded-b-lg z-50 shadow-2xl origin-left"
+                style={{
+                    scaleX,
+                    background: `linear-gradient(to right, var(--accent-2), var(--secondary), var(--primary))`,
+                }}
             />
 
             {/* Animated Ambient Blobs */}
             <motion.div
-                className="absolute w-96 h-96 bg-pink-300/30 rounded-full blur-3xl top-20 -left-40"
+                className="absolute w-96 h-96 rounded-full blur-3xl top-20 -left-40"
+                style={{ backgroundColor: "var(--accent-2)/30" }}
                 animate={{ y: [0, 30, 0] }}
                 transition={{ repeat: Infinity, duration: 8 }}
             />
             <motion.div
-                className="absolute w-96 h-96 bg-indigo-300/30 rounded-full blur-3xl top-1/2 -right-40"
+                className="absolute w-96 h-96 rounded-full blur-3xl top-1/2 -right-40"
+                style={{ backgroundColor: "var(--primary)/30" }}
                 animate={{ y: [0, -30, 0] }}
                 transition={{ repeat: Infinity, duration: 8 }}
             />
 
             <div className="relative z-10 max-w-6xl mx-auto px-2 flex flex-col gap-6">
                 {/* Sticky Header */}
-                <motion.div className="flex items-center justify-between bg-white/60 backdrop-blur-xl border border-white/50 rounded-3xl shadow-2xl p-4 sticky top-4 z-20">
+                <motion.div
+                    className="flex items-center justify-between rounded-3xl shadow-2xl p-4 sticky top-4 z-20"
+                    style={{
+                        backgroundColor: "var(--bg)/60",
+                        backdropFilter: "blur(16px)",
+                        border: "1px solid var(--border)",
+                    }}
+                >
                     <motion.button
                         onClick={() => navigate(-1)}
                         whileHover={{ scale: 1.1 }}
-                        className="flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-200 bg-white hover:bg-indigo-50 text-indigo-700 shadow-sm"
+                        className="flex items-center gap-2 px-4 py-2 rounded-full shadow-sm"
+                        style={{
+                            backgroundColor: "var(--bg)",
+                            border: "1px solid var(--primary)/30",
+                            color: "var(--primary)",
+                        }}
                     >
                         <ArrowLeft size={20} />
                     </motion.button>
 
                     <motion.h1
-                        className="text-4xl font-extrabold bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent flex items-center gap-2 drop-shadow-md"
+                        className="text-4xl font-extrabold flex items-center gap-2 drop-shadow-md"
                         animate={{ scale: hoverGlow ? 1.05 : 1 }}
                         onHoverStart={() => setHoverGlow(true)}
                         onHoverEnd={() => setHoverGlow(false)}
+                        style={{
+                            background: `linear-gradient(90deg, var(--accent-2), var(--secondary), var(--primary))`,
+                            WebkitBackgroundClip: "text",
+                            color: "transparent",
+                        }}
                     >
-                        <Sparkles size={26} className="text-yellow-400" />
+                        <Sparkles size={26} style={{ color: "var(--accent-2)" }} />
                         All Projects
                     </motion.h1>
 
                     <motion.button
                         onClick={() => setShowFilters(!showFilters)}
                         whileHover={{ scale: 1.1 }}
-                        className="flex items-center gap-2 px-4 py-2 rounded-full border border-purple-200 bg-white hover:bg-purple-50 text-purple-700 shadow-sm"
+                        className="flex items-center gap-2 px-4 py-2 rounded-full shadow-sm"
+                        style={{
+                            backgroundColor: "var(--bg)",
+                            border: "1px solid var(--secondary)/40",
+                            color: "var(--secondary)",
+                        }}
                     >
                         <Filter size={18} />
                         {showFilters ? "Hide" : "Show"}
@@ -98,7 +129,12 @@ export default function ProjectsPage() {
                             initial={{ opacity: 0, y: -15 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -15 }}
-                            className="bg-white/60 backdrop-blur-xl border border-purple-100 rounded-2xl shadow-md p-4"
+                            className="rounded-2xl shadow-md p-4"
+                            style={{
+                                backgroundColor: "var(--bg)/60",
+                                backdropFilter: "blur(16px)",
+                                border: "1px solid var(--border)",
+                            }}
                         >
                             <motion.div layout className="flex flex-wrap gap-2 pt-2">
                                 {tags.map((tag) => {
@@ -108,10 +144,13 @@ export default function ProjectsPage() {
                                             key={tag}
                                             onClick={() => toggleTag(tag)}
                                             whileHover={{ scale: 1.06 }}
-                                            className={`px-3 py-1 text-xs rounded-full ${active
-                                                ? "bg-purple-600 text-white shadow-md shadow-purple-300"
-                                                : "bg-white border border-purple-200 hover:bg-purple-50 text-purple-600"
-                                                }`}
+                                            className="px-3 py-1 text-xs rounded-full"
+                                            style={{
+                                                backgroundColor: active ? "var(--secondary)" : "var(--bg)",
+                                                color: active ? "var(--bg)" : "var(--secondary)",
+                                                border: active ? "none" : "1px solid var(--secondary)/30",
+                                                boxShadow: active ? "0 4px 10px var(--secondary)/30" : "none",
+                                            }}
                                         >
                                             {tag}
                                         </motion.button>
@@ -134,7 +173,7 @@ export default function ProjectsPage() {
                                 scale: 1.07,
                                 rotateX: 3,
                                 rotateY: -3,
-                                shadow: "0px 0px 20px rgba(150,0,250,0.4)",
+                                boxShadow: "0px 0px 20px var(--accent-2)/40",
                             }}
                         >
                             <ProjectCard project={p} />

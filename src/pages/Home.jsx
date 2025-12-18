@@ -10,16 +10,24 @@ import { projects } from "../data/projects";
 import Contact from "../components/Contact";
 import resumeUrl from '../assets/Nishant-Rathore-SD2.pdf'
 import ExperienceSection from "../components/ExperienceSection";
+import { useSelector } from "react-redux";
+import ThemeSelector from "../components/ThemeSelector";
 
 export default function Home() {
+    const theme = useSelector((state) => state.theme.activeTheme);
+    console.log(theme)
     useEffect(() => {
         document.title = "Nishant Rathore | Portfolio";
     }, []);
 
 
     return (
-        <div className="min-h-screen font-inter text-slate-800 bg-gradient-to-b from-white to-indigo-50">
+        <div className={`${theme} w-full transition-colors duration-300`}>
             <Navbar resumeUrl={resumeUrl} />
+            {/* === THEME SELECTOR === */}
+            <div className="fixed left-5 bottom-5 z-50">
+                <ThemeSelector />
+            </div>
             <main>
                 <Hero />
                 <About />
