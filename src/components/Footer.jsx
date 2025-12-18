@@ -15,7 +15,11 @@ export default function Footer() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="relative py-12 bg-gradient-to-b from-white via-indigo-50/60 to-pink-50/40 backdrop-blur-sm border-t border-indigo-100"
+      className="relative py-12 backdrop-blur-sm border-t"
+      style={{
+        background: "linear-gradient(to bottom, var(--bg), var(--bg-soft), var(--bg))",
+        borderColor: "var(--border)",
+      }}
     >
       {/* Soft animated background shimmer */}
       <motion.div
@@ -27,12 +31,20 @@ export default function Footer() {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute inset-0 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 opacity-40 blur-3xl"
+        className="absolute inset-0 opacity-40 blur-3xl"
+        style={{
+          background: "linear-gradient(to right, var(--primary)/20, var(--secondary)/20, var(--accent-2)/20)",
+        }}
       />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center px-4">
         {/* Gradient divider */}
-        <div className="h-px w-2/3 mx-auto bg-gradient-to-r from-transparent via-indigo-400/50 to-transparent mb-8" />
+        <div
+          className="h-px w-2/3 mx-auto mb-8"
+          style={{
+            background: "linear-gradient(to right, transparent, var(--primary)/50, transparent)",
+          }}
+        />
 
         {/* Socials */}
         <div className="flex justify-center gap-6 mb-8">
@@ -45,11 +57,14 @@ export default function Footer() {
               aria-label={s.label}
               whileHover={{ scale: 1.15, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className="p-3 rounded-full bg-white border border-indigo-100 shadow-sm hover:shadow-lg transition-all"
+              className="p-3 rounded-full border shadow-sm hover:shadow-lg transition-all"
+              style={{
+                backgroundColor: "var(--card-bg)",
+                borderColor: "var(--border)",
+                color: "var(--primary)",
+              }}
             >
-              <span className="text-indigo-600 hover:text-pink-500 transition-colors">
-                {s.icon}
-              </span>
+              <span style={{ color: "var(--primary)" }}>{s.icon}</span>
             </motion.a>
           ))}
         </div>
@@ -57,29 +72,46 @@ export default function Footer() {
         {/* Signature */}
         <motion.p
           whileHover={{ scale: 1.03 }}
-          className="text-sm md:text-base text-slate-600 font-medium"
+          className="text-sm md:text-base font-medium"
+          style={{ color: "var(--text-muted)" }}
         >
           © {new Date().getFullYear()}{" "}
-          <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">
+          <span
+            className="font-semibold text-transparent bg-clip-text"
+            style={{
+              background: "linear-gradient(to right, var(--primary), var(--secondary), var(--accent-2))", WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
             Nishant Rathore
           </span>{" "}
           • Built with ❤️ using{" "}
-          <span className="text-indigo-500 font-semibold">React</span>,{" "}
-          <span className="text-purple-500 font-semibold">Tailwind</span> &{" "}
-          <span className="text-pink-500 font-semibold">Framer Motion</span>
+          <span style={{ color: "var(--primary)" }} className="font-semibold">
+            React
+          </span>
+          ,{" "}
+          <span style={{ color: "var(--secondary)" }} className="font-semibold">
+            Tailwind
+          </span>{" "}
+          &{" "}
+          <span style={{ color: "var(--accent-2)" }} className="font-semibold">
+            Framer Motion
+          </span>
         </motion.p>
       </div>
 
       {/* Floating subtle gradient blobs */}
       <motion.div
-        className="absolute -bottom-8 left-1/3 w-28 h-28 bg-indigo-300/20 rounded-full blur-3xl"
+        className="absolute -bottom-8 left-1/3 w-28 h-28 rounded-full blur-3xl"
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        style={{ background: "var(--primary)/20" }}
       />
       <motion.div
-        className="absolute bottom-0 right-1/4 w-24 h-24 bg-pink-300/20 rounded-full blur-3xl"
+        className="absolute bottom-0 right-1/4 w-24 h-24 rounded-full blur-3xl"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        style={{ background: "var(--accent-2)/20" }}
       />
     </motion.footer>
   );

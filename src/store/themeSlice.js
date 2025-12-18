@@ -1,16 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const savedTheme = "theme-aurora";   
-
 const themeSlice = createSlice({
     name: "theme",
     initialState: {
-        currentTheme: savedTheme,
+        activeTheme: "theme-aurora",
     },
 
     reducers: {
         setTheme: (state, action) => {
-            state.currentTheme = action.payload;
+            state.activeTheme = action.payload;
         },
     },
 });

@@ -18,4 +18,135 @@ body {
   animation: gradientMove 6s ease infinite;
 }
 
+/* =========================
+   BASE TOKENS (DEFAULT)
+========================= */
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f8fafc;
+
+  --text: #0f172a;
+  --text-muted: #64748b;
+
+  --primary: #6366f1;
+  --secondary: #8b5cf6;
+
+  --accent-1: var(--primary);
+  --accent-2: #ec4899;
+
+  --border: #e5e7eb;
+
+  
+}
+
+/* =========================
+   CORE THEMES
+========================= */
+
+/* Aurora – Indigo (Default) */
+.theme-aurora {
+  --primary: #6366f1;
+  --secondary: #8b5cf6;
+  --accent-2: #ec4899;
+}
+
+/* Nebula – Sky Blue */
+.theme-nebula {
+  --primary: #0ea5e9;
+  --secondary: #22d3ee;
+  --accent-2: #38bdf8;
+}
+
+/* Forest Mist – Calm Green */
+.theme-forestmist {
+  --primary: #10b981;
+  --secondary: #34d399;
+  --accent-2: #6ee7b7;
+}
+
+/* =========================
+   ELEGANT NEUTRALS
+========================= */
+
+/* Graphite – Luxury Gray */
+.theme-graphite {
+  --primary: #374151;
+  --secondary: #6b7280;
+  --accent-2: #9ca3af;
+
+  --text-muted: #4b5563;
+}
+
+/* Ivory – Editorial Light */
+.theme-ivory {
+  --bg: #fafafa;
+  --bg-soft: #f1f5f9;
+
+  --primary: #475569;
+  --secondary: #64748b;
+  --accent-2: #94a3b8;
+
+  --text-muted: #64748b;
+}
+
+/* =========================
+   HIGH-END ACCENT THEMES
+========================= */
+
+/* Royal Purple – Creative Premium */
+.theme-royalpurple {
+  --primary: #7c3aed;
+  --secondary: #a78bfa;
+  --accent-2: #c084fc;
+}
+
+/* Oceanic – Enterprise Blue */
+.theme-oceanic {
+  --primary: #0284c7;
+  --secondary: #38bdf8;
+  --accent-2: #0ea5e9;
+}
+
+/* Amber Glow – Luxury Gold */
+.theme-amberglow {
+  --primary: #f59e0b;
+  --secondary: #fbbf24;
+  --accent-2: #fde68a;
+
+  --text-muted: #92400e;
+}
+
+/* =========================
+   DARK-FIRST THEMES
+========================= */
+
+/* Obsidian – Ultra Dark */
+.theme-obsidian {
+  --bg: #020617;
+  --bg-soft: #020617;
+
+  --text: #e5e7eb;
+  --text-muted: #94a3b8;
+
+  --primary: #6366f1;
+  --secondary: #818cf8;
+  --accent-2: #a5b4fc;
+
+  --border: #1e293b;
+}
+
+/* Midnight – Navy Dark */
+.theme-midnight {
+  --bg: #0f172a;
+  --bg-soft: #020617;
+
+  --text: #e5e7eb;
+  --text-muted: #94a3b8;
+
+  --primary: #38bdf8;
+  --secondary: #818cf8;
+  --accent-2: #60a5fa;
+
+  --border: #1e293b;
+}
 
