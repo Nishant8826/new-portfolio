@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import myPic from "../assets/my-pic.jpg";
-import ThemeSelector from "./ThemeSelector";
 
 export default function Hero() {
     const ref = useRef(null);
@@ -23,18 +22,22 @@ export default function Hero() {
     };
 
     return (
-        <motion.section ref={ref} onMouseMove={handleMouseMove} style={{ opacity: fade }} id="home" className="hero-gradient flex justify-center items-center p-32 relative" >
-
-            <div className="absolute top-10 right-10 z-50">
-                <ThemeSelector />
-            </div>
-
-
+        <motion.section
+            ref={ref}
+            onMouseMove={handleMouseMove}
+            style={{ opacity: fade }}
+            id="home"
+            className="relative min-h-screen flex flex-col-reverse md:flex-row items-center justify-center overflow-hidden 
+             bg-gradient-to-b from-white via-indigo-50 to-purple-50 
+             px-6 sm:px-10 md:px-28 pt-24 md:pt-0"
+        >
             {/* === LEFT CONTENT === */}
             <div className="relative z-10 flex-1 text-center md:text-left space-y-6 mt-10 md:mt-0">
                 <motion.h1
                     style={{ x: mouse.x * 20, y: mouse.y * 20 }}
-                    className="text-4xl sm:text-6xl font-extrabold leading-tight hero-title-gradient bg-[length:200%_200%] animate-gradientMove"
+                    className="text-4xl sm:text-6xl font-extrabold leading-tight 
+                     bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+                     bg-[length:200%_200%] animate-gradientMove bg-clip-text text-transparent"
                 >
                     Turning Ideas Into <br /> Scalable Digital Realities
                 </motion.h1>
