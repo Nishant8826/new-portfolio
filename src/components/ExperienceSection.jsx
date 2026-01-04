@@ -47,23 +47,9 @@ const ExperienceSection = () => {
             id="experience"
             className="relative py-20 sm:py-28 overflow-hidden"
             style={{
-                background: "linear-gradient(to bottom, var(--bg), var(--bg-soft))",
+                background: "bg-[linear-gradient(to_bottom,var(--bg),var(--bg-soft),var(--bg))]",
             }}
         >
-            {/* Background glows */}
-            <div
-                className="absolute inset-0 opacity-20 pointer-events-none"
-                style={{
-                    background: "radial-gradient(circle at 30% 20%, var(--primary) 0%, transparent 40%)",
-                }}
-            />
-            <div
-                className="absolute inset-0 opacity-20 pointer-events-none"
-                style={{
-                    background: "radial-gradient(circle at 70% 80%, var(--secondary) 0%, transparent 40%)",
-                }}
-            />
-
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
                 {/* Title */}
                 <motion.h2

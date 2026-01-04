@@ -28,10 +28,7 @@ export default function Hero() {
             ref={ref}
             id="home"
             onMouseMove={handleMouseMove}
-            className="relative min-h-screen flex flex-col-reverse md:flex-row
-            items-center justify-center overflow-hidden
-            bg-[linear-gradient(to_bottom,var(--bg),var(--bg-soft),var(--bg))]
-            px-6 sm:px-10 md:px-28 pt-24 md:pt-0"
+            className="relative min-h-screen flex flex-col-reverse md:flex-row items-center justify-center overflow-hidden px-6 sm:px-10 md:px-28 pt-24 md:pt-0"
         >
 
             {/* === LEFT CONTENT === */}

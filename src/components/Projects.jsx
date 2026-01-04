@@ -10,24 +10,7 @@ export default function Projects() {
     <section
       id="projects"
       className="relative py-28 overflow-hidden"
-      style={{
-        background: "linear-gradient(to bottom, var(--bg), var(--bg-soft), var(--bg))",
-      }}
     >
-      {/* Soft animated background orbs */}
-      <motion.div
-        className="absolute top-20 left-1/4 w-72 h-72 rounded-full blur-[120px]"
-        style={{ backgroundColor: "var(--primary-glow)" }}
-        animate={{ y: [0, 20, 0], opacity: [0.5, 0.7, 0.5] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-10 right-1/4 w-80 h-80 rounded-full blur-[140px]"
-        style={{ backgroundColor: "var(--secondary-glow)" }}
-        animate={{ y: [0, -25, 0], opacity: [0.4, 0.6, 0.4] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-      />
-
       {/* Header */}
       <div className="relative text-center mb-20">
         <motion.h2

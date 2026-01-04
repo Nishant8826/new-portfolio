@@ -42,15 +42,8 @@ export default function Skills() {
     return (
         <section
             id="skills"
-            className="relative py-20 sm:py-24 
-            bg-[linear-gradient(to_bottom,var(--bg),var(--bg-soft),var(--bg))] 
-            overflow-hidden"
+            className="relative py-20 sm:py-24 overflow-hidden"
         >
-            {/* Background glows */}
-            <div className="absolute top-0 left-1/3 w-56 sm:w-72 h-56 sm:h-72 
-                bg-[color-mix(in_srgb,var(--primary)_30%,transparent)] rounded-full blur-[100px]" />
-            <div className="absolute bottom-0 right-1/3 w-60 sm:w-80 h-60 sm:h-80 
-                bg-[color-mix(in_srgb,var(--secondary)_30%,transparent)] rounded-full blur-[120px]" />
 
             {/* Heading */}
             <div className="relative text-center mb-10 sm:mb-14 px-4">

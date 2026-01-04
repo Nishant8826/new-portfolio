@@ -28,6 +28,9 @@ body {
   --text: #0f172a;
   --text-muted: #64748b;
 
+  --text-hover: var(--text);
+  --text-muted-hover: var(--text);
+
   --primary: #6366f1;
   --secondary: #8b5cf6;
 
@@ -36,7 +39,29 @@ body {
 
   --border: #e5e7eb;
 
-  
+
+
+    /* Card */
+  --card-bg: rgba(255, 255, 255, 0.7);
+
+  /* Tags */
+  --tag-bg: rgba(99, 102, 241, 0.12);
+  --tag-text: var(--primary);
+  --tag-border: rgba(99, 102, 241, 0.3);
+
+  /* Buttons */
+  --button-bg: rgba(99, 102, 241, 0.15);
+  --button-text: var(--primary);
+  --button-backdrop: blur(10px);
+  --button-shadow: 0 10px 30px rgba(99, 102, 241, 0.25);
+  --accent-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
+
+  /* Text helpers */
+  --text-on-primary: #ffffff;
+
+  /* RGB helpers for gradients */
+  --text-on-bg-rgb: 15, 23, 42;
+
 }
 
 /* =========================
@@ -133,6 +158,22 @@ body {
   --accent-2: #a5b4fc;
 
   --border: #1e293b;
+
+  --text-hover: #ffffff;
+  --text-muted-hover: #e5e7eb;
+
+  --card-bg: rgba(2, 6, 23, 0.75);
+
+  --tag-bg: rgba(129, 140, 248, 0.15);
+  --tag-text: #c7d2fe;
+  --tag-border: rgba(129, 140, 248, 0.35);
+
+  --button-bg: rgba(129, 140, 248, 0.18);
+  --button-text: #e0e7ff;
+
+  --accent-shadow: 0 10px 40px rgba(129, 140, 248, 0.45);
+
+  --text-on-bg-rgb: 229, 231, 235;
 }
 
 /* Midnight – Navy Dark */
@@ -148,5 +189,18 @@ body {
   --accent-2: #60a5fa;
 
   --border: #1e293b;
+
+  --card-bg: rgba(15, 23, 42, 0.75);
+
+  --tag-bg: rgba(56, 189, 248, 0.15);
+  --tag-text: #bae6fd;
+  --tag-border: rgba(56, 189, 248, 0.35);
+
+  --button-bg: rgba(56, 189, 248, 0.18);
+  --button-text: #e0f2fe;
+
+  --accent-shadow: 0 10px 40px rgba(56, 189, 248, 0.45);
+
+  --text-on-bg-rgb: 229, 231, 235;
 }
 

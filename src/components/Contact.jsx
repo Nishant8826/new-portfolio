@@ -57,21 +57,7 @@ export default function Contact() {
         <section
             id="contact"
             className="relative pt-28 pb-10 px-6 overflow-hidden"
-            style={{ background: "linear-gradient(to bottom, var(--bg-soft), var(--bg))" }}
         >
-            {/* Animated background blobs */}
-            <motion.div
-                className="absolute -top-24 -left-24 w-96 h-96 rounded-full blur-3xl"
-                style={{ backgroundColor: "var(--primary)", opacity: 0.3 }}
-                animate={{ scale: [1, 1.2, 1], opacity: [0.6, 0.8, 0.6] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-                className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
-                style={{ backgroundColor: "var(--accent-2)", opacity: 0.3 }}
-                animate={{ scale: [1.1, 0.9, 1.1], opacity: [0.6, 0.8, 0.6] }}
-                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            />
 
             <div className="relative max-w-5xl mx-auto text-center">
                 {/* Heading */}

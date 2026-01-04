@@ -29,12 +29,6 @@ export default function About() {
   const scale = useTransform(scrollYProgress, [0, 1], [0.97, 1.02]);
 
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  const handleMouseMove = (e) => {
-    const { innerWidth, innerHeight } = window;
-    const x = (e.clientX - innerWidth / 2) / innerWidth;
-    const y = (e.clientY - innerHeight / 2) / innerHeight;
-    setMouse({ x, y });
-  };
 
   const directionScale = direction === "down" ? 1.02 : 0.98;
   const directionOpacity = direction === "down" ? 1 : 0.95;
@@ -42,14 +36,6 @@ export default function About() {
   return (
     <motion.section
       ref={ref}
-      onMouseMove={handleMouseMove}
-      style={{
-        opacity,
-        scale,
-        transition: "all 0.5s ease-out",
-        filter: direction === "down" ? "brightness(1)" : "brightness(0.98)",
-        background: "linear-gradient(to bottom, var(--bg), var(--primary)/10, var(--secondary)/10)",
-      }}
       id="about"
       className="relative py-28 px-6 md:px-16 overflow-hidden"
     >

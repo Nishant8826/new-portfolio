@@ -15,11 +15,7 @@ export default function Footer() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="relative py-12 backdrop-blur-sm border-t"
-      style={{
-        background: "linear-gradient(to bottom, var(--bg), var(--bg-soft), var(--bg))",
-        borderColor: "var(--border)",
-      }}
+      className="relative py-12  border-t"
     >
       {/* Soft animated background shimmer */}
       <motion.div
@@ -32,19 +28,11 @@ export default function Footer() {
           ease: "linear",
         }}
         className="absolute inset-0 opacity-40 blur-3xl"
-        style={{
-          background: "linear-gradient(to right, var(--primary)/20, var(--secondary)/20, var(--accent-2)/20)",
-        }}
       />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center px-4">
         {/* Gradient divider */}
-        <div
-          className="h-px w-2/3 mx-auto mb-8"
-          style={{
-            background: "linear-gradient(to right, transparent, var(--primary)/50, transparent)",
-          }}
-        />
+        <div className="h-px w-2/3 mx-auto mb-8"/>
 
         {/* Socials */}
         <div className="flex justify-center gap-6 mb-8">

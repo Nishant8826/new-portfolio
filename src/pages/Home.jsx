@@ -22,9 +22,8 @@ export default function Home() {
 
 
     return (
-        <div className={`${theme} w-full transition-colors duration-300`}>
+        <div className={`${theme} w-full transition-colors duration-300 bg-[linear-gradient(to_bottom,var(--bg),var(--bg-soft),var(--bg))]`}>
             <Navbar resumeUrl={resumeUrl} />
-            {/* === THEME SELECTOR === */}
             <div className="fixed left-5 bottom-5 z-50">
                 <ThemeSelector />
             </div>
