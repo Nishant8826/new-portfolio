@@ -44,8 +44,15 @@ body {
     /* Card */
   --card-bg: rgba(255, 255, 255, 0.7);
 
+  /* RGB helpers for gradients and glassmorphism */
+  --bg-rgb: 255, 255, 255;
+  --primary-rgb: 99, 102, 241;
+  --secondary-rgb: 139, 92, 246;
+  --accent-2-rgb: 236, 72, 153;
+  --border-rgb: 229, 231, 235;
+
   /* Tags */
-  --tag-bg: rgba(99, 102, 241, 0.12);
+  --tag-bg: rgba(var(--primary-rgb), 0.12);
   --tag-text: var(--primary);
   --tag-border: rgba(99, 102, 241, 0.3);
 
@@ -73,6 +80,9 @@ body {
   --primary: #6366f1;
   --secondary: #8b5cf6;
   --accent-2: #ec4899;
+  --primary-rgb: 99, 102, 241;
+  --secondary-rgb: 139, 92, 246;
+  --accent-2-rgb: 236, 72, 153;
 }
 
 /* Nebula – Sky Blue */
@@ -80,6 +90,9 @@ body {
   --primary: #0ea5e9;
   --secondary: #22d3ee;
   --accent-2: #38bdf8;
+  --primary-rgb: 14, 165, 233;
+  --secondary-rgb: 34, 211, 238;
+  --accent-2-rgb: 56, 189, 248;
 }
 
 /* Forest Mist – Calm Green */
@@ -87,6 +100,9 @@ body {
   --primary: #10b981;
   --secondary: #34d399;
   --accent-2: #6ee7b7;
+  --primary-rgb: 16, 185, 129;
+  --secondary-rgb: 52, 211, 153;
+  --accent-2-rgb: 110, 231, 183;
 }
 
 /* =========================
@@ -98,6 +114,9 @@ body {
   --primary: #374151;
   --secondary: #6b7280;
   --accent-2: #9ca3af;
+  --primary-rgb: 55, 65, 81;
+  --secondary-rgb: 107, 114, 128;
+  --accent-2-rgb: 156, 163, 175;
 
   --text-muted: #4b5563;
 }
@@ -106,10 +125,14 @@ body {
 .theme-ivory {
   --bg: #fafafa;
   --bg-soft: #f1f5f9;
+  --bg-rgb: 250, 250, 250;
 
   --primary: #475569;
   --secondary: #64748b;
   --accent-2: #94a3b8;
+  --primary-rgb: 71, 85, 105;
+  --secondary-rgb: 100, 116, 139;
+  --accent-2-rgb: 148, 163, 184;
 
   --text-muted: #64748b;
 }
@@ -123,6 +146,9 @@ body {
   --primary: #7c3aed;
   --secondary: #a78bfa;
   --accent-2: #c084fc;
+  --primary-rgb: 124, 58, 237;
+  --secondary-rgb: 167, 139, 250;
+  --accent-2-rgb: 192, 132, 252;
 }
 
 /* Oceanic – Enterprise Blue */
@@ -130,6 +156,9 @@ body {
   --primary: #0284c7;
   --secondary: #38bdf8;
   --accent-2: #0ea5e9;
+  --primary-rgb: 2, 132, 199;
+  --secondary-rgb: 56, 189, 248;
+  --accent-2-rgb: 14, 165, 233;
 }
 
 /* Amber Glow – Luxury Gold */
@@ -137,6 +166,9 @@ body {
   --primary: #f59e0b;
   --secondary: #fbbf24;
   --accent-2: #fde68a;
+  --primary-rgb: 245, 158, 11;
+  --secondary-rgb: 251, 191, 36;
+  --accent-2-rgb: 253, 230, 138;
 
   --text-muted: #92400e;
 }
@@ -149,6 +181,7 @@ body {
 .theme-obsidian {
   --bg: #020617;
   --bg-soft: #020617;
+  --bg-rgb: 2, 6, 23;
 
   --text: #e5e7eb;
   --text-muted: #94a3b8;
@@ -156,22 +189,26 @@ body {
   --primary: #6366f1;
   --secondary: #818cf8;
   --accent-2: #a5b4fc;
+  --primary-rgb: 99, 102, 241;
+  --secondary-rgb: 129, 140, 248;
+  --accent-2-rgb: 165, 180, 252;
 
   --border: #1e293b;
+  --border-rgb: 30, 41, 59;
 
   --text-hover: #ffffff;
   --text-muted-hover: #e5e7eb;
 
   --card-bg: rgba(2, 6, 23, 0.75);
 
-  --tag-bg: rgba(129, 140, 248, 0.15);
+  --tag-bg: rgba(var(--primary-rgb), 0.15);
   --tag-text: #c7d2fe;
-  --tag-border: rgba(129, 140, 248, 0.35);
+  --tag-border: rgba(var(--primary-rgb), 0.35);
 
-  --button-bg: rgba(129, 140, 248, 0.18);
+  --button-bg: rgba(var(--primary-rgb), 0.18);
   --button-text: #e0e7ff;
 
-  --accent-shadow: 0 10px 40px rgba(129, 140, 248, 0.45);
+  --accent-shadow: 0 10px 40px rgba(var(--primary-rgb), 0.45);
 
   --text-on-bg-rgb: 229, 231, 235;
 }
@@ -180,6 +217,7 @@ body {
 .theme-midnight {
   --bg: #0f172a;
   --bg-soft: #020617;
+  --bg-rgb: 15, 23, 42;
 
   --text: #e5e7eb;
   --text-muted: #94a3b8;
@@ -187,19 +225,23 @@ body {
   --primary: #38bdf8;
   --secondary: #818cf8;
   --accent-2: #60a5fa;
+  --primary-rgb: 56, 189, 248;
+  --secondary-rgb: 129, 140, 248;
+  --accent-2-rgb: 96, 165, 250;
 
   --border: #1e293b;
+  --border-rgb: 30, 41, 59;
 
   --card-bg: rgba(15, 23, 42, 0.75);
 
-  --tag-bg: rgba(56, 189, 248, 0.15);
+  --tag-bg: rgba(var(--primary-rgb), 0.15);
   --tag-text: #bae6fd;
-  --tag-border: rgba(56, 189, 248, 0.35);
+  --tag-border: rgba(var(--primary-rgb), 0.35);
 
-  --button-bg: rgba(56, 189, 248, 0.18);
+  --button-bg: rgba(var(--primary-rgb), 0.18);
   --button-text: #e0f2fe;
 
-  --accent-shadow: 0 10px 40px rgba(56, 189, 248, 0.45);
+  --accent-shadow: 0 10px 40px rgba(var(--primary-rgb), 0.45);
 
   --text-on-bg-rgb: 229, 231, 235;
 }

@@ -28,23 +28,23 @@ export default function Hero() {
             ref={ref}
             id="home"
             onMouseMove={handleMouseMove}
-            className="relative min-h-screen flex flex-col-reverse md:flex-row items-center justify-center overflow-hidden px-6 sm:px-10 md:px-28 pt-24 md:pt-0"
+            className="relative min-h-[100svh] flex flex-col md:flex-row items-center justify-center overflow-hidden px-6 sm:px-10 lg:px-20 xl:px-28 pt-20 md:pt-0"
         >
 
             {/* === LEFT CONTENT === */}
-            <div className="relative z-10 flex-1 text-center md:text-left space-y-6 mt-10 md:mt-0">
+            <div className="relative z-10 flex-1 text-center md:text-left space-y-6 md:space-y-8 mt-[10svh] md:mt-0">
                 <motion.h1
                     style={{ x: mouse.x * 20, y: mouse.y * 20 }}
-                    className="text-4xl sm:text-6xl font-extrabold leading-tight
+                    className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1]
                     bg-[linear-gradient(90deg,var(--accent-1),var(--secondary),var(--accent-2))]
                     bg-[length:200%_200%] animate-gradientMove
                     bg-clip-text text-transparent"
                 >
-                    Turning Ideas Into <br /> Scalable Digital Realities
+                    Turning Ideas Into <br className="hidden sm:block" /> Scalable Digital Realities
                 </motion.h1>
 
                 <motion.p
-                    className="text-lg md:text-xl text-[var(--text-muted)]
+                    className="text-base sm:text-lg md:text-xl text-[var(--text-muted)]
                     max-w-2xl leading-relaxed mx-auto md:mx-0"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -76,7 +76,7 @@ export default function Hero() {
 
                 {/* === CTA BUTTONS === */}
                 <motion.div
-                    className="flex flex-wrap justify-center md:justify-start gap-4 pt-4"
+                    className="flex flex-wrap justify-center md:justify-start gap-4 pt-2 md:pt-4"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
@@ -90,9 +90,9 @@ export default function Hero() {
                         }
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="relative px-8 py-3 rounded-full font-semibold text-white
+                        className="relative px-6 sm:px-8 py-3 rounded-full font-semibold text-white
                         bg-[linear-gradient(90deg,var(--primary),var(--secondary),var(--accent-2))]
-                        shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                        shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden text-sm sm:text-base"
                     >
                         <motion.div
                             className="absolute inset-0
@@ -115,11 +115,11 @@ export default function Hero() {
                         }
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="relative px-8 py-3 rounded-full font-semibold
+                        className="relative px-6 sm:px-8 py-3 rounded-full font-semibold
                         border border-[var(--primary)]
                         text-[var(--primary)]
                         hover:bg-[color-mix(in_srgb,var(--primary)_10%,transparent)]
-                        transition-all duration-300 overflow-hidden"
+                        transition-all duration-300 overflow-hidden text-sm sm:text-base"
                     >
                         <motion.div
                             className="absolute inset-0
@@ -137,7 +137,7 @@ export default function Hero() {
 
             {/* === RIGHT PROFILE IMAGE === */}
             <motion.div
-                className="flex-1 flex justify-center relative"
+                className="flex-1 flex justify-center relative mt-8 md:mt-0"
                 initial={{ opacity: 0, scale: 0.85 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
@@ -145,22 +145,22 @@ export default function Hero() {
                 {/* Floating Glow */}
                 <motion.div
                     style={{ x: mouse.x * 25, y: mouse.y * 25 }}
-                    className="absolute w-96 h-96
+                    className="absolute w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96
                     bg-[linear-gradient(90deg,var(--primary),var(--accent-2))]
-                    opacity-30 rounded-full blur-[100px] -z-10"
+                    opacity-30 rounded-full blur-[80px] lg:blur-[100px] -z-10"
                 />
 
                 {/* Image + Glow */}
                 <motion.div
-                    whileHover={{ scale: 1.08 }}
+                    whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 200, damping: 15 }}
                     className="relative group"
                 >
                     <motion.img
                         src={myPic}
                         alt="Profile"
-                        className="w-96 h-96 rounded-full object-cover
-                        border-4 border-[var(--bg)] shadow-xl"
+                        className="w-56 h-56 sm:w-72 sm:h-72 lg:w-[28rem] lg:h-[28rem] rounded-full object-cover
+                        border-4 border-[var(--bg)] shadow-2xl"
                     />
 
                 </motion.div>
@@ -169,15 +169,15 @@ export default function Hero() {
             {/* === DECORATIVE PARALLAX BLOBS === */}
             <motion.div
                 style={{ y: y1 }}
-                className="absolute top-24 left-24 w-72 h-72
-                bg-[color-mix(in_srgb,var(--primary)_30%,transparent)]
-                rounded-full blur-[120px] opacity-60"
+                className="absolute top-12 left-12 sm:top-24 sm:left-24 w-48 h-48 sm:w-72 sm:h-72
+                bg-[color-mix(in_srgb,var(--primary)_20%,transparent)]
+                rounded-full blur-[80px] sm:blur-[120px] opacity-40 sm:opacity-60 -z-50"
             />
             <motion.div
                 style={{ y: y2 }}
-                className="absolute bottom-20 right-24 w-80 h-80
-                bg-[color-mix(in_srgb,var(--secondary)_30%,transparent)]
-                rounded-full blur-[140px] opacity-60"
+                className="absolute bottom-12 right-12 sm:bottom-20 sm:right-24 w-56 h-56 sm:w-80 sm:h-80
+                bg-[color-mix(in_srgb,var(--secondary)_20%,transparent)]
+                rounded-full blur-[100px] sm:blur-[140px] opacity-40 sm:opacity-60 -z-50"
             />
 
             {/* === SCROLL INDICATOR === */}

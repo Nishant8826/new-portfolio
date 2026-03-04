@@ -57,7 +57,7 @@ export default function Skills() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    >
+                >
                     My Tech Stack
                 </motion.h2>
 
@@ -91,11 +91,11 @@ export default function Skills() {
                                 className="inline-flex flex-col items-center justify-center text-center min-w-[90px] sm:min-w-[120px]"
                             >
                                 <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-2xl
-                                    bg-[var(--bg-soft)] shadow-md hover:shadow-xl transition-all"
+                                    bg-[var(--bg-soft)] border border-[var(--border)] shadow-sm hover:shadow-lg transition-all"
                                 >
                                     <Icon className="text-2xl sm:text-3xl" style={{ color: "var(--primary)" }} />
                                 </div>
-                                <p className="mt-2 text-xs sm:text-sm font-medium" style={{ color: "var(--text-muted)" }}>
+                                <p className="mt-2 text-xs sm:text-sm font-semibold" style={{ color: "var(--text)" }}>
                                     {skill.name}
                                 </p>
                             </div>
@@ -118,11 +118,11 @@ export default function Skills() {
                                 className="inline-flex flex-col items-center justify-center text-center min-w-[90px] sm:min-w-[120px]"
                             >
                                 <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-2xl
-                                    bg-[var(--bg-soft)] shadow-md hover:shadow-xl transition-all"
+                                    bg-[var(--bg-soft)] border border-[var(--border)] shadow-sm hover:shadow-lg transition-all"
                                 >
                                     <Icon className="text-2xl sm:text-3xl" style={{ color: "var(--secondary)" }} />
                                 </div>
-                                <p className="mt-2 text-xs sm:text-sm font-medium" style={{ color: "var(--text-muted)" }}>
+                                <p className="mt-2 text-xs sm:text-sm font-semibold" style={{ color: "var(--text)" }}>
                                     {skill.name}
                                 </p>
                             </div>
@@ -145,11 +145,11 @@ export default function Skills() {
                                 className="inline-flex flex-col items-center justify-center text-center min-w-[90px] sm:min-w-[120px]"
                             >
                                 <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-2xl
-                                    bg-[var(--bg-soft)] shadow-md hover:shadow-xl transition-all"
+                                    bg-[var(--bg-soft)] border border-[var(--border)] shadow-sm hover:shadow-lg transition-all"
                                 >
                                     <Icon className="text-2xl sm:text-3xl" style={{ color: "var(--accent-2)" }} />
                                 </div>
-                                <p className="mt-2 text-xs sm:text-sm font-medium" style={{ color: "var(--text-muted)" }}>
+                                <p className="mt-2 text-xs sm:text-sm font-semibold" style={{ color: "var(--text)" }}>
                                     {skill.name}
                                 </p>
                             </div>

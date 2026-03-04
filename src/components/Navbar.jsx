@@ -49,16 +49,16 @@ export default function Navbar({ resumeUrl }) {
             <motion.nav
                 animate={{ y: isVisible ? 0 : -100, opacity: isVisible ? 1 : 0 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-[1000px]:w-[95%] 
+                className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-7xl
                     rounded-2xl px-6 md:px-8 py-4 flex justify-between items-center
                     backdrop-blur-2xl border transition-all duration-500`}
                 style={{
                     backgroundColor: isScrolled
-                        ? "rgba(var(--bg-rgb),0.8)"
-                        : "rgba(var(--bg-rgb),0.4)",
+                        ? "rgba(var(--bg-rgb), 0.8)"
+                        : "rgba(var(--bg-rgb), 0.4)",
                     borderColor: isScrolled
-                        ? "rgba(var(--border-rgb),0.3)"
-                        : "rgba(var(--border-rgb),0.2)",
+                        ? "rgba(var(--border-rgb), 0.3)"
+                        : "rgba(var(--border-rgb), 0.2)",
                     boxShadow: isScrolled
                         ? "0 10px 25px rgba(0,0,0,0.1)"
                         : "0 4px 12px rgba(0,0,0,0.05)",
@@ -67,8 +67,8 @@ export default function Navbar({ resumeUrl }) {
                 {/* Logo */}
                 <Logo />
 
-                {/* Desktop Nav - Hide for screen <= 1000px */}
-                <div className="hidden lg:flex items-center gap-8 text-[15px] font-medium">
+                {/* Desktop Nav */}
+                <div className="hidden md:flex items-center gap-6 lg:gap-8 text-[15px] font-medium">
                     {navLinks.map((name) => (
                         <motion.a
                             key={name}
@@ -97,10 +97,10 @@ export default function Navbar({ resumeUrl }) {
                     ))}
                 </div>
 
-                {/* Resume Button - Hide for screen <= 1000px */}
+                {/* Resume Button */}
                 <button
                     onClick={() => window.open(resumeUrl, "_blank")}
-                    className="hidden lg:flex  items-center gap-2 px-5 py-2.5 rounded-xl font-medium shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300"
+                    className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300"
                     style={{
                         background: `linear-gradient(to right, var(--primary), var(--secondary))`,
                         color: "var(--text-on-primary)",
@@ -110,11 +110,14 @@ export default function Navbar({ resumeUrl }) {
                     Resume
                 </button>
 
-                {/* Mobile Menu Button - Show for screen <= 1000px */}
+                {/* Mobile Menu Button */}
                 <button
-                    className="flex lg:hidden items-center justify-center"
+                    className="flex md:hidden items-center justify-center p-2 rounded-xl"
                     onClick={() => setMenuOpen(!menuOpen)}
-                    style={{ color: "var(--text)" }}
+                    style={{
+                        color: "var(--text)",
+                        backgroundColor: "rgba(var(--bg-rgb), 0.5)"
+                    }}
                 >
                     {menuOpen ? <X size={26} /> : <Menu size={26} />}
                 </button>
@@ -126,7 +129,7 @@ export default function Navbar({ resumeUrl }) {
                     <>
                         {/* Overlay */}
                         <motion.div
-                            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
+                            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
@@ -135,15 +138,15 @@ export default function Navbar({ resumeUrl }) {
 
                         {/* Mobile Menu */}
                         <motion.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.3 }}
-                            className="fixed top-20 left-1/2 -translate-x-1/2 w-[90%] rounded-2xl shadow-lg border p-6 flex flex-col items-center gap-4 z-50 md:hidden"
+                            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                            transition={{ duration: 0.3, type: "spring", damping: 25 }}
+                            className="fixed top-24 left-1/2 -translate-x-1/2 w-[90%] max-w-sm rounded-2xl shadow-2xl border p-6 flex flex-col items-center gap-3 z-50 md:hidden overflow-hidden"
                             style={{
-                                backgroundColor: "rgba(var(--bg-rgb),0.95)",
-                                borderColor: "rgba(var(--border-rgb),0.2)",
-                                backdropFilter: "blur(15px)",
+                                backgroundColor: "rgba(var(--bg-rgb), 0.98)",
+                                borderColor: "rgba(var(--border-rgb), 0.3)",
+                                backdropFilter: "blur(20px)",
                             }}
                         >
                             {navLinks.map((name, i) => (
