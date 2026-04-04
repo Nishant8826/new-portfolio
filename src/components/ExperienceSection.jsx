@@ -1,35 +1,65 @@
 import React, { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { Briefcase, Award, GraduationCap } from "lucide-react";
+import { Briefcase, Award, GraduationCap, Code, Monitor } from "lucide-react";
 
 const experiences = [
     {
+        role: "Full Stack Developer - Tallento.ai (Remote)",
+        duration: "December 2025 – March 2026",
+        icon: <Code size={20} />,
+        details: [
+            "Architected a role- and permission-based access control (RBAC) system supporting multiple roles per user, ensuring secure, granular authorization; streamlined access management, minimized unauthorized data exposure, and enhanced system scalability.",
+            "Simplified media handling by migrating from multiple media tables to a single centralized media table, enabling faster and more reliable media fetching while reducing database complexity.",
+            "Designed and implemented a comprehensive Feed module enabling users to upload and manage posts with support for multiple media types (photos and videos), along with interactive features such as likes, comments, and shares. Incorporated configurable visibility controls (public/private) to enhance user privacy and engagement.",
+            "Implemented performance optimization strategies across the stack, including integrating Redis caching to reduce database load and improve API response times, introducing frontend debouncing to limit redundant API calls, and minimizing unnecessary component re-renders to enhance overall application performance and scalability.",
+            "Contributed to the successful database and web application migration initiative, assisting in the transition from a deprecated PHP stack to a modern, maintainable technology framework, improving system security, performance, and long-term scalability.",
+            "Implemented a real-time chat system between employers and candidates using WebSockets (e.g., Socket.io) to enable instant communication, reducing delays from traditional channels and improving engagement, which led to faster decision-making and a more efficient hiring process.",
+            "Developed browser push notifications using Firebase Cloud Messaging (FCM) to notify employers when candidates apply and update candidates on application status changes, ensuring real-time alerts without manual checks, which improved user retention, reduced missed updates, and enhanced overall platform experience.",
+            "Implemented CI/CD pipelines to automate build, testing, and deployment workflows, reducing manual intervention and accelerating release cycles."
+        ],
+    },
+    {
         role: "MERN Stack Developer - Freelance (Remote)",
-        duration: "July 2025 – Sept 2025",
+        duration: "June 2025 – September 2025",
+        icon: <Monitor size={20} />,
+        details: [
+            "Designed the system architecture (HLD and LLD) for scalability and performance and developed a trading-learning app using React Native with stage-based lessons, quizzes, and gamification, applying modular architecture, optimized API responses, lazy loading, and engagement mechanics such as streaks, badges, challenges, and leaderboards — resulting in reduced load time, improved responsiveness, higher user engagement, and longer session durations.",
+            "Integrated Firebase Authentication including email, phone, and social login to simplify onboarding and enhance security using OAuth providers, token-based authentication, and real-time identity verification, which reduced login friction and lowered user drop-off during registration.",
+            "Added Razorpay payment gateway for subscriptions and in-app purchases to enable smooth monetization and premium unlocks by configuring order creation, webhook validation, and secure transaction flow, resulting in faster checkout and an increase in completed transactions."
+        ],
+    },
+    {
+        role: "React-Native Developer, ENotaryOnCall - GDKN/Techrev (Remote)",
+        duration: "March 2024 – June 2025",
         icon: <Briefcase size={20} />,
         details: [
-            "Built a React Native trading-learning app with gamification.",
-            "Integrated Razorpay, Firebase Auth, and push notifications.",
-            "Delivered Web and Mobile MERN applications.",
+            "Built a production-ready React Native (Expo) mobile application with cross-platform compatibility and reusable component architecture, enabling faster development cycles and reducing long-term maintenance effort.",
+            "Integrated backend APIs with optimized state management and on-device performance tuning using Redux Toolkit, memoization, and render profiling, which improved load times and significantly enhanced UI responsiveness.",
+            "Delivered a responsive and intuitive UI/UX through Tailwind styling, scalable component patterns, and modular code structure, accelerating feature development and simplifying future expansion."
         ],
     },
     {
-        role: "Software Developer — GDKN (Remote, Bhopal)",
-        duration: "April 2022 – June 2025",
+        role: "MEAN Stack Developer, KeepFluent - GDKN/Techrev (Remote)",
+        duration: "January 2023 – June 2025",
         icon: <Award size={20} />,
         details: [
-            "Built full-stack apps with Angular/Node.js and React/Express.",
-            "Developed REST APIs and WebSocket-based real-time features.",
-            "Awarded “Employee of the Month” 6× for high performance.",
+            "Built RESTful APIs using Express.js with modular routing, middleware, and secure authentication to support scalable backend architecture.",
+            "Delivered front-end with Angular-based web app and Ionic-based mobile app with reusable component architecture and API integration.",
+            "Created responsive UIs using Bootstrap and Material UI, improving accessibility and user experience across device breakpoints.",
+            "Optimized SQL database performance through index tuning, query optimization, and structured relational schema design.",
+            "Managed server deployments and updates using PuTTY by securely accessing cloud instances, configuring environments, and ensuring smooth production releases with minimal downtime.",
+            "Developed a centralized logging system using Winston and Morgan to capture application and server logs, enabling better debugging, monitoring, and traceability.",
+            "Monitored server health and application performance on cloud infrastructure using logs and diagnostics, proactively identifying and resolving production issues to improve system reliability."
         ],
     },
     {
-        role: "Teaching Assistant (Intern) — FunctionUp (Remote)",
-        duration: "Feb 2022 – April 2022",
+        role: "Teaching Assistant - FunctionUp (Remote)",
+        duration: "August 2022 – December 2022",
         icon: <GraduationCap size={20} />,
         details: [
-            "Mentored students on Node.js, MongoDB, and AWS.",
-            "Supported live coding sessions and doubt resolution.",
+            "Mentored students on Node.js, MongoDB, AWS, and backend development fundamentals, ensuring conceptual clarity and hands-on implementation.",
+            "Assisted students in live coding sessions, demonstrating problem-solving approaches, debugging, and best practices for writing clean and efficient code.",
+            "Provided 1-on-1 doubt resolution and technical guidance, helping students to overcome blockers and complete assignments and capstone projects."
         ],
     },
 ];
