@@ -1,5 +1,5 @@
 export const socialLinks = {
-  github: "https://github.com/nishantrathore123",
+  github: "https://github.com/Nishant8826",
   linkedin: "https://linkedin.com/in/nishant-rathore",
-  email: "nishant.rathore@example.com",
+  email: "rnishant428@gmail.com",
 };

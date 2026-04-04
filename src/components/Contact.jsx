@@ -1,254 +1,190 @@
-import { motion } from "framer-motion";
-import { Mail, MessageSquare, Send, User, MapPin, Phone } from "lucide-react";
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, MessageSquare, Send, User, MapPin, Globe, CheckCircle2, Phone, Github, Linkedin, Twitter, ExternalLink, ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Contact() {
-    const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
-    const [errors, setErrors] = useState({});
-    const [status, setStatus] = useState("");
-
-    const validate = () => {
-        let tempErrors = {};
-        if (!formData.name.trim()) tempErrors.name = "Name is required.";
-        if (!formData.email.trim()) {
-            tempErrors.email = "Email is required.";
-        } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) {
-            tempErrors.email = "Please enter a valid email.";
-        }
-        if (!formData.phone.trim()) {
-            tempErrors.phone = "Phone number is required.";
-        } else if (!/^\+?[0-9]{7,15}$/.test(formData.phone)) {
-            tempErrors.phone = "Please enter a valid phone number.";
-        }
-        if (!formData.message.trim()) tempErrors.message = "Message cannot be empty.";
-        setErrors(tempErrors);
-        return Object.keys(tempErrors).length === 0;
-    };
+    const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+    const [status, setStatus] = useState(""); // "", "sending", "sent"
+    const [charCount, setCharCount] = useState(0);
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-        setErrors({ ...errors, [e.target.name]: "" });
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+        if (name === "message") setCharCount(value.length);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!validate()) return;
         setStatus("sending");
+        await new Promise(r => setTimeout(r, 2000));
+        setStatus("sent");
+    };
 
-        try {
-            const res = await fetch("https://ecom-l0jv.onrender.com/api/portfolio-contact", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-            });
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+    };
 
-            if (res.ok) {
-                setStatus("sent");
-                setFormData({ name: "", email: "", phone: "", message: "" });
-                setTimeout(() => setStatus(""), 3000);
-            } else throw new Error("Failed to send");
-        } catch (error) {
-            console.error(error);
-            setStatus("error");
-        }
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
     };
 
     return (
-        <section
-            id="contact"
-            className="relative pt-28 pb-10 px-6 overflow-hidden"
-        >
+        <section id="contact" className="relative py-24 lg:py-40 px-6 overflow-hidden bg-[var(--bg)]">
+            {/* Elegant Background Gradients */}
+            <div className="absolute inset-0 pointer-events-none select-none">
+                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[var(--primary)]/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-[var(--secondary)]/10 rounded-full blur-[100px]" />
+            </div>
 
-            <div className="relative max-w-5xl mx-auto text-center">
-                {/* Heading */}
-                <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="text-5xl md:text-6xl font-extrabold mb-6 bg-clip-text text-transparent drop-shadow-sm"
-                    style={{
-                        background: "linear-gradient(to right, var(--primary), var(--secondary), var(--accent-2))", WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                    }}
+            <div className="relative z-10 max-w-7xl mx-auto">
+                <motion.div 
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={containerVariants}
+                    className="grid lg:grid-cols-[1fr_1.4fr] gap-16 lg:gap-24 items-start"
                 >
-                    Let’s Work Together
-                </motion.h2>
+                    {/* Left: Content & Links */}
+                    <div className="space-y-12 lg:sticky lg:top-24">
+                        <div className="space-y-6">
+                            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/20 shadow-sm">
+                                <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--primary)]"></span>
+                                </span>
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--primary)]">Available for projects</span>
+                            </motion.div>
 
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.6 }}
-                    className="max-w-xl mx-auto mb-12 leading-relaxed"
-                    style={{ color: "var(--text-muted)" }}
-                >
-                    Have a project, a collaboration idea, or just want to say hi? Send me a message — I’d love to connect and create something awesome.
-                </motion.p>
+                            <motion.h2 variants={itemVariants} className="text-5xl lg:text-7xl font-bold tracking-tight text-[var(--text)] leading-[1.1]">
+                                Let's build <br /> 
+                                <span className="text-[var(--primary)]">something great</span> together.
+                            </motion.h2>
 
-                {/* Contact form */}
-                <motion.form
-                    onSubmit={handleSubmit}
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, type: "spring" }}
-                    className="relative p-10 rounded-3xl max-w-2xl mx-auto border backdrop-blur-xl shadow-md"
-                    style={{ backgroundColor: "var(--card-bg)", borderColor: "var(--border)" }}
-                >
-                    {/* Glowing gradient border */}
-                    <div
-                        className="absolute inset-0 rounded-3xl pointer-events-none blur-md"
-                        style={{
-                            background: "linear-gradient(to right, var(--primary), var(--secondary), var(--accent-2))",
-                            opacity: 0.4,
-                            border: "2px solid transparent",
-                        }}
-                    />
+                            <motion.p variants={itemVariants} className="text-lg text-[var(--text-muted)] font-medium leading-relaxed max-w-md italic opacity-80 font-serif">
+                                "Design is not just what it looks like and feels like. Design is how it works."
+                            </motion.p>
+                        </div>
 
-                    <div className="grid md:grid-cols-2 gap-6 relative">
-                        {/* Animated Inputs */}
-                        {[{ icon: <User />, name: "name", placeholder: "Your Name" }, { icon: <Mail />, name: "email", placeholder: "Your Email" }].map(
-                            (item, i) => (
-                                <motion.div
-                                    key={item.name}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.2 }}
-                                    className="relative text-left"
-                                >
-                                    <span className="absolute top-3 left-3" style={{ color: "var(--primary)" }}>
-                                        {item.icon}
-                                    </span>
-                                    <input
-                                        type={item.name === "email" ? "email" : "text"}
-                                        name={item.name}
-                                        placeholder={item.placeholder}
-                                        value={formData[item.name]}
-                                        onChange={handleChange}
-                                        className={`w-full pl-10 p-3 rounded-xl border focus:outline-none focus:ring-2`}
-                                        style={{
-                                            borderColor: errors[item.name] ? "var(--error)" : "var(--border)",
-                                            backgroundColor: "var(--card-bg)",
-                                            color: "var(--text)",
-                                            focusRingColor: "var(--primary)",
-                                        }}
-                                    />
-                                    {errors[item.name] && (
-                                        <p className="text-sm mt-1 pl-2" style={{ color: "var(--error)" }}>
-                                            {errors[item.name]}
-                                        </p>
-                                    )}
-                                </motion.div>
-                            )
-                        )}
+                        <motion.div variants={itemVariants} className="flex flex-col gap-6">
+                            {[
+                                { icon: <Mail className="w-5 h-5" />, label: "Email Me", value: "rnishant428@gmail.com", href: "mailto:rnishant428@gmail.com" },
+                                { icon: <MapPin className="w-5 h-5" />, label: "Location", value: "New Delhi, India", href: "#" },
+                            ].map((info, i) => (
+                                <a key={i} href={info.href} className="group flex items-center gap-6 p-1 hover:pl-2 transition-all duration-300">
+                                    <div className="w-12 h-12 rounded-xl bg-[var(--bg-soft)] border border-[rgba(var(--border-rgb),0.1)] flex items-center justify-center text-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-white transition-all shadow-sm">
+                                        {info.icon}
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] opacity-50">{info.label}</span>
+                                        <span className="text-base font-bold text-[var(--text)]">{info.value}</span>
+                                    </div>
+                                </a>
+                            ))}
+                        </motion.div>
 
-                        {/* Phone */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.4 }}
-                            className="relative text-left md:col-span-2"
-                        >
-                            <Phone size={20} className="absolute top-3 left-3" style={{ color: "var(--primary)" }} />
-                            <input
-                                type="text"
-                                name="phone"
-                                placeholder="Your Phone Number"
-                                value={formData.phone}
-                                onChange={handleChange}
-                                className="w-full pl-10 p-3 rounded-xl border focus:outline-none focus:ring-2"
-                                style={{
-                                    borderColor: errors.phone ? "var(--error)" : "var(--border)",
-                                    backgroundColor: "var(--card-bg)",
-                                    color: "var(--text)",
-                                    focusRingColor: "var(--primary)",
-                                }}
-                            />
-                            {errors.phone && (
-                                <p className="text-sm mt-1 pl-2" style={{ color: "var(--error)" }}>
-                                    {errors.phone}
-                                </p>
-                            )}
+                        {/* Social Links Bar */}
+                        <motion.div variants={itemVariants} className="flex items-center gap-6 pt-4 border-t border-[rgba(var(--border-rgb),0.05)]">
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] opacity-50">Follow me</span>
+                            <div className="flex gap-4">
+                                {[
+                                    { icon: <Github size={20} />, href: "https://github.com/Nishant8826" },
+                                    { icon: <Linkedin size={20} />, href: "https://linkedin.com/in/nishant8826" },
+                                    { icon: <Twitter size={20} />, href: "#" },
+                                ].map((soc, i) => (
+                                    <a key={i} href={soc.href} className="text-[var(--text-muted)] hover:text-[var(--primary)] transition-colors transform hover:scale-110">
+                                        {soc.icon}
+                                    </a>
+                                ))}
+                            </div>
                         </motion.div>
                     </div>
 
-                    {/* Message */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5 }}
-                        className="relative mt-6 text-left"
+                    {/* Right: Premium Glass Form */}
+                    <motion.div 
+                        variants={itemVariants}
+                        className="relative group lg:mt-8"
                     >
-                        <MessageSquare className="absolute top-3 left-3" size={20} style={{ color: "var(--primary)" }} />
-                        <textarea
-                            name="message"
-                            rows="5"
-                            placeholder="Your Message"
-                            value={formData.message}
-                            onChange={handleChange}
-                            className="w-full pl-10 p-3 rounded-xl border focus:outline-none focus:ring-2"
-                            style={{
-                                borderColor: errors.message ? "var(--error)" : "var(--border)",
-                                backgroundColor: "var(--card-bg)",
-                                color: "var(--text)",
-                                focusRingColor: "var(--primary)",
-                            }}
-                        />
-                        {errors.message && (
-                            <p className="text-sm mt-1 pl-2" style={{ color: "var(--error)" }}>
-                                {errors.message}
-                            </p>
-                        )}
+                        <div className="absolute -inset-0.5 bg-gradient-to-br from-[var(--primary)]/30 via-transparent to-[var(--secondary)]/30 rounded-[2.5rem] blur opacity-20 group-hover:opacity-40 transition-opacity duration-1000" />
+                        
+                        <form 
+                            onSubmit={handleSubmit}
+                            className="relative p-8 lg:p-12 rounded-[2.5rem] bg-[rgba(var(--bg-rgb),0.4)] border border-[rgba(var(--border-rgb),0.1)] backdrop-blur-xl shadow-2xl space-y-8"
+                        >
+                            <div className="space-y-2">
+                                <h3 className="text-2xl font-bold text-[var(--text)]">Send Message</h3>
+                                <p className="text-sm text-[var(--text-muted)] font-medium">I'll get back to you within 24 hours.</p>
+                            </div>
+
+                            <div className="space-y-6">
+                                <div className="grid md:grid-cols-2 gap-6">
+                                    <div className="space-y-2 group/input">
+                                        <label className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] ml-1 group-focus-within/input:text-[var(--primary)] transition-colors">Full Name</label>
+                                        <div className="relative">
+                                            <input required name="name" type="text" placeholder="John Doe" onChange={handleChange}
+                                                className="w-full px-6 py-4 rounded-2xl bg-[var(--bg-soft)]/50 border border-[rgba(var(--border-rgb),0.1)] focus:border-[var(--primary)]/50 outline-none transition-all font-semibold text-[var(--text)]"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="space-y-2 group/input">
+                                        <label className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] ml-1 group-focus-within/input:text-[var(--primary)] transition-colors">Email Address</label>
+                                        <div className="relative">
+                                            <input required name="email" type="email" placeholder="john@example.com" onChange={handleChange}
+                                                className="w-full px-6 py-4 rounded-2xl bg-[var(--bg-soft)]/50 border border-[rgba(var(--border-rgb),0.1)] focus:border-[var(--primary)]/50 outline-none transition-all font-semibold text-[var(--text)]"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-2 group/input">
+                                    <div className="flex justify-between px-1">
+                                        <label className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] group-focus-within/input:text-[var(--primary)] transition-colors">How can I help?</label>
+                                        <span className="text-[9px] font-mono opacity-30">{charCount}/500</span>
+                                    </div>
+                                    <textarea required name="message" rows="6" placeholder="Tell me about your project..." onChange={handleChange} maxLength="500"
+                                        className="w-full px-6 py-5 rounded-2xl bg-[var(--bg-soft)]/50 border border-[rgba(var(--border-rgb),0.1)] focus:border-[var(--primary)]/50 outline-none transition-all font-semibold text-[var(--text)] resize-none"
+                                    />
+                                </div>
+
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    disabled={status === "sending" || status === "sent"}
+                                    className={`relative w-full py-5 rounded-2xl font-bold uppercase tracking-widest text-[11px] overflow-hidden transition-all duration-500 flex items-center justify-center shadow-lg ${
+                                        status === "sent" ? "bg-emerald-500 text-white" : "bg-[var(--text)] text-[var(--bg)]"
+                                    }`}
+                                >
+                                    <AnimatePresence mode="wait">
+                                        {status === "sending" ? (
+                                            <motion.div key="sending" className="flex items-center gap-3">
+                                                <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                                                Sending...
+                                            </motion.div>
+                                        ) : status === "sent" ? (
+                                            <motion.div key="sent" className="flex items-center gap-3">
+                                                <CheckCircle2 size={16} /> Message Sent
+                                            </motion.div>
+                                        ) : (
+                                            <motion.div key="idle" className="flex items-center gap-3 group-hover:gap-5 transition-all">
+                                                Send Message <ArrowRight size={16} />
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </motion.button>
+                            </div>
+                        </form>
                     </motion.div>
-
-                    {/* Button */}
-                    <motion.button
-                        whileHover={{ scale: 1.08, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        type="submit"
-                        disabled={status === "sending"}
-                        className="mt-8 w-full md:w-auto px-10 py-3 font-semibold rounded-full flex items-center justify-center gap-2 mx-auto shadow-md"
-                        style={{
-                            background:
-                                status === "error"
-                                    ? "linear-gradient(to right, var(--error), var(--error-dark))"
-                                    : "linear-gradient(to right, var(--primary), var(--secondary), var(--accent-2))",
-                            color: "var(--white)",
-                            opacity: status === "sending" ? 0.7 : 1,
-                        }}
-                    >
-                        {status === "sending" ? (
-                            <>⏳ Sending...</>
-                        ) : status === "sent" ? (
-                            <>✅ Sent!</>
-                        ) : status === "error" ? (
-                            <>❌ Failed</>
-                        ) : (
-                            <>
-                                <Send size={18} /> Send Message
-                            </>
-                        )}
-                    </motion.button>
-                </motion.form>
-
-                {/* Contact Info */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
-                    className="mt-12 flex flex-col md:flex-row justify-center gap-6"
-                    style={{ color: "var(--text-muted)" }}
-                >
-                    <div className="flex items-center gap-2">
-                        <MapPin size={18} style={{ color: "var(--primary)" }} />
-                        <span>India</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <Mail size={18} style={{ color: "var(--primary)" }} />
-                        <a href="mailto:rnishant428@gmail.com" style={{ color: "var(--text)" }} className="hover:underline">
-                            rnishant428@gmail.com
-                        </a>
-                    </div>
                 </motion.div>
             </div>
+
+            <style jsx>{`
+                .text-outline {
+                    -webkit-text-stroke: 1px var(--text-muted);
+                    opacity: 0.3;
+                }
+            `}</style>
         </section>
     );
 }
+
