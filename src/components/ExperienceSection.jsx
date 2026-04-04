@@ -1,123 +1,217 @@
 import React, { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { Briefcase, Award, GraduationCap, Code, Monitor } from "lucide-react";
+import { Briefcase, Award, GraduationCap, Code, Monitor, Calendar, CheckCircle2, Building } from "lucide-react";
 
 const experiences = [
     {
-        role: "Full Stack Developer - Tallento.ai (Remote)",
-        duration: "December 2025 – March 2026",
-        icon: <Code size={20} />,
+        role: "Full Stack Developer",
+        company: "Tallento.ai (Remote)",
+        date: "Dec 2025 – Mar 2026",
+        icon: <Code size={24} strokeWidth={1.5} />,
         details: [
             "Architected a role- and permission-based access control (RBAC) system supporting multiple roles per user, ensuring secure, granular authorization; streamlined access management, minimized unauthorized data exposure, and enhanced system scalability.",
             "Simplified media handling by migrating from multiple media tables to a single centralized media table, enabling faster and more reliable media fetching while reducing database complexity.",
-            "Designed and implemented a comprehensive Feed module enabling users to upload and manage posts with support for multiple media types (photos and videos), along with interactive features such as likes, comments, and shares. Incorporated configurable visibility controls (public/private) to enhance user privacy and engagement.",
-            "Implemented performance optimization strategies across the stack, including integrating Redis caching to reduce database load and improve API response times, introducing frontend debouncing to limit redundant API calls, and minimizing unnecessary component re-renders to enhance overall application performance and scalability.",
-            "Contributed to the successful database and web application migration initiative, assisting in the transition from a deprecated PHP stack to a modern, maintainable technology framework, improving system security, performance, and long-term scalability.",
-            "Implemented a real-time chat system between employers and candidates using WebSockets (e.g., Socket.io) to enable instant communication, reducing delays from traditional channels and improving engagement, which led to faster decision-making and a more efficient hiring process.",
-            "Developed browser push notifications using Firebase Cloud Messaging (FCM) to notify employers when candidates apply and update candidates on application status changes, ensuring real-time alerts without manual checks, which improved user retention, reduced missed updates, and enhanced overall platform experience.",
-            "Implemented CI/CD pipelines to automate build, testing, and deployment workflows, reducing manual intervention and accelerating release cycles."
+            "Designed and implemented a comprehensive Feed module enabling users to upload and manage posts with support for multiple media types, with interactive features such as likes, comments, and shares.",
+            "Implemented performance optimization strategies across the stack, including integrating Redis caching, introducing frontend debouncing, and minimizing unnecessary component re-renders.",
+            "Contributed to database and web app migration from a deprecated PHP stack to a modern, maintainable technology framework.",
+            "Implemented a real-time chat system between employers and candidates using WebSockets (Socket.io) to enable instant communication.",
+            "Developed browser push notifications using Firebase Cloud Messaging (FCM) to notify employers and candidates, ensuring real-time alerts.",
+            "Implemented CI/CD pipelines to automate build, testing, and deployment workflows, reducing manual intervention."
         ],
     },
     {
-        role: "MERN Stack Developer - Freelance (Remote)",
-        duration: "June 2025 – September 2025",
-        icon: <Monitor size={20} />,
+        role: "MERN Stack Developer",
+        company: "Freelance (Remote)",
+        date: "Jun 2025 – Sep 2025",
+        icon: <Monitor size={24} strokeWidth={1.5} />,
         details: [
-            "Designed the system architecture (HLD and LLD) for scalability and performance and developed a trading-learning app using React Native with stage-based lessons, quizzes, and gamification, applying modular architecture, optimized API responses, lazy loading, and engagement mechanics such as streaks, badges, challenges, and leaderboards — resulting in reduced load time, improved responsiveness, higher user engagement, and longer session durations.",
-            "Integrated Firebase Authentication including email, phone, and social login to simplify onboarding and enhance security using OAuth providers, token-based authentication, and real-time identity verification, which reduced login friction and lowered user drop-off during registration.",
-            "Added Razorpay payment gateway for subscriptions and in-app purchases to enable smooth monetization and premium unlocks by configuring order creation, webhook validation, and secure transaction flow, resulting in faster checkout and an increase in completed transactions."
+            "Designed the system architecture (HLD and LLD) for scalability and performance and developed a trading-learning app using React Native with stage-based lessons, quizzes, and gamification.",
+            "Integrated Firebase Authentication including email, phone, and social login to simplify onboarding and enhance security using OAuth providers.",
+            "Added Razorpay payment gateway for subscriptions and in-app purchases to enable smooth monetization and secure transaction flow."
         ],
     },
     {
-        role: "React-Native Developer, ENotaryOnCall - GDKN/Techrev (Remote)",
-        duration: "March 2024 – June 2025",
-        icon: <Briefcase size={20} />,
+        role: "React-Native Developer",
+        company: "ENotaryOnCall, Techrev",
+        date: "Mar 2024 – Jun 2025",
+        icon: <Briefcase size={24} strokeWidth={1.5} />,
         details: [
-            "Built a production-ready React Native (Expo) mobile application with cross-platform compatibility and reusable component architecture, enabling faster development cycles and reducing long-term maintenance effort.",
-            "Integrated backend APIs with optimized state management and on-device performance tuning using Redux Toolkit, memoization, and render profiling, which improved load times and significantly enhanced UI responsiveness.",
-            "Delivered a responsive and intuitive UI/UX through Tailwind styling, scalable component patterns, and modular code structure, accelerating feature development and simplifying future expansion."
+            "Built a production-ready React Native (Expo) mobile application with cross-platform compatibility and reusable component architecture.",
+            "Integrated backend APIs with optimized state management and on-device performance tuning using Redux Toolkit, memoization, and render profiling.",
+            "Delivered a responsive and intuitive UI/UX through Tailwind styling, scalable component patterns, and modular code structure."
         ],
     },
     {
-        role: "MEAN Stack Developer, KeepFluent - GDKN/Techrev (Remote)",
-        duration: "January 2023 – June 2025",
-        icon: <Award size={20} />,
+        role: "MEAN Stack Developer",
+        company: "KeepFluent, Techrev",
+        date: "Jan 2023 – Jun 2025",
+        icon: <Award size={24} strokeWidth={1.5} />,
         details: [
             "Built RESTful APIs using Express.js with modular routing, middleware, and secure authentication to support scalable backend architecture.",
             "Delivered front-end with Angular-based web app and Ionic-based mobile app with reusable component architecture and API integration.",
             "Created responsive UIs using Bootstrap and Material UI, improving accessibility and user experience across device breakpoints.",
             "Optimized SQL database performance through index tuning, query optimization, and structured relational schema design.",
-            "Managed server deployments and updates using PuTTY by securely accessing cloud instances, configuring environments, and ensuring smooth production releases with minimal downtime.",
-            "Developed a centralized logging system using Winston and Morgan to capture application and server logs, enabling better debugging, monitoring, and traceability.",
-            "Monitored server health and application performance on cloud infrastructure using logs and diagnostics, proactively identifying and resolving production issues to improve system reliability."
+            "Managed server deployments and updates using PuTTY, configuring environments, and ensuring smooth production releases.",
+            "Developed a centralized logging system using Winston and Morgan to capture application and server logs.",
+            "Monitored server health and application performance on cloud infrastructure proactively identifying and resolving production issues."
         ],
     },
     {
-        role: "Teaching Assistant - FunctionUp (Remote)",
-        duration: "August 2022 – December 2022",
-        icon: <GraduationCap size={20} />,
+        role: "Teaching Assistant",
+        company: "FunctionUp (Remote)",
+        date: "Aug 2022 – Dec 2022",
+        icon: <GraduationCap size={24} strokeWidth={1.5} />,
         details: [
-            "Mentored students on Node.js, MongoDB, AWS, and backend development fundamentals, ensuring conceptual clarity and hands-on implementation.",
-            "Assisted students in live coding sessions, demonstrating problem-solving approaches, debugging, and best practices for writing clean and efficient code.",
-            "Provided 1-on-1 doubt resolution and technical guidance, helping students to overcome blockers and complete assignments and capstone projects."
+            "Mentored students on Node.js, MongoDB, AWS, and backend development fundamentals.",
+            "Assisted students in live coding sessions, demonstrating problem-solving approaches, debugging, and best practices.",
+            "Provided 1-on-1 doubt resolution and technical guidance to complete assignments and capstone projects."
         ],
     },
 ];
 
 const ExperienceSection = () => {
-    const ref = useRef(null);
+    const sectionRef = useRef(null);
+    
+    // Track the vertical scroll progress of the entire section (which is heavily heightened)
     const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start 80%", "end 20%"],
+        target: sectionRef,
     });
-    const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+    
+    // Map the scroll progress to width for the top tracking line
+    const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+    
+    // Map the vertical scroll to negative horizontal movement for the cards.
+    // This perfectly binds the X-axis tracking to the Y-axis scroll.
+    // Notice that both mapping strings must have IDENTICAL CSS syntax structure for Framer Motion to animate them seamlessly.
+    const xTransform = useTransform(scrollYProgress, [0, 1], ["calc(0% + 0vw)", "calc(-100% + 100vw)"]);
+
+    const handleNodeClick = (index) => {
+        if (!sectionRef.current) return;
+        
+        const rect = sectionRef.current.getBoundingClientRect();
+        // Calculate the absolute top position of the section on the page
+        const sectionTop = rect.top + window.scrollY;
+        
+        // Using "start start" and "end end" mapping:
+        // The total scrollable distance is the section's height minus the viewport height
+        const scrollableDistance = rect.height - window.innerHeight;
+        const progress = index / (experiences.length - 1);
+        
+        const targetY = sectionTop + (scrollableDistance * progress);
+        
+        window.scrollTo({
+            top: targetY,
+            behavior: "smooth"
+        });
+    };
 
     return (
         <section
             id="experience"
-            className="relative py-20 sm:py-28 overflow-hidden"
-            style={{
-                background: "linear-gradient(to bottom, var(--bg), var(--bg-soft), var(--bg))",
-            }}
+            ref={sectionRef}
+            className="relative h-[400vh]"
+            style={{ backgroundColor: "var(--bg)" }}
         >
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
-                {/* Title */}
-                <motion.h2
-                    initial={{ opacity: 0, y: -30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    viewport={{ once: true }}
-                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-12 sm:mb-20 text-center bg-clip-text text-transparent"
+            <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden">
+                {/* SaaS Faint Grid Background */}
+                <div 
+                    className="absolute inset-0 pointer-events-none opacity-40 z-0" 
                     style={{
-                        background: "linear-gradient(to right, var(--primary), var(--secondary), var(--accent-2))",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                    }}
-                >
-                    Experience
-                </motion.h2>
+                        backgroundImage: `linear-gradient(to right, rgba(var(--border-rgb), 0.1) 1px, transparent 1px),
+                                          linear-gradient(to bottom, rgba(var(--border-rgb), 0.1) 1px, transparent 1px)`,
+                        backgroundSize: '4rem 4rem',
+                        maskImage: 'radial-gradient(ellipse 60% 80% at 50% 50%, black 20%, transparent 80%)',
+                        WebkitMaskImage: 'radial-gradient(ellipse 60% 80% at 50% 50%, black 20%, transparent 80%)'
+                    }} 
+                />
 
-                {/* Timeline */}
-                <div ref={ref} className="relative flex flex-col items-center">
-                    {/* Vertical line - hidden on very small screens for better space */}
-                    <div
-                        className="absolute left-6 sm:left-8 md:left-1/2 transform md:-translate-x-1/2 w-[2px] sm:w-[3px] rounded-full h-full overflow-hidden"
-                        style={{ backgroundColor: "rgba(var(--border-rgb), 0.5)" }}
-                    >
-                        <motion.div
-                            className="absolute top-0 left-0 w-full rounded-full"
-                            style={{
-                                height: lineHeight,
-                                background: "linear-gradient(to bottom, var(--primary), var(--secondary), var(--accent-2))",
-                            }}
-                        />
+                {/* Neon Glow spots */}
+                <div className="absolute top-0 right-1/4 w-96 h-96 bg-[var(--primary)] rounded-full filter blur-[150px] opacity-10 pointer-events-none" />
+                <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[var(--secondary)] rounded-full filter blur-[150px] opacity-10 pointer-events-none" />
+
+                <div className="relative w-full z-10 pt-10 sm:pt-0">
+                    {/* Title */}
+                    <div className="text-center px-4 mb-10 sm:mb-16">
+                        <h2 
+                            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4"
+                            style={{ color: "var(--text)" }}
+                        >
+                            Professional <span style={{
+                                background: "linear-gradient(135deg, var(--primary), var(--secondary), var(--accent-2))",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                            }}>Journey</span>
+                        </h2>
+                        <p className="text-sm sm:text-base font-medium text-[var(--primary)] tracking-widest uppercase opacity-80 mb-3">
+                            A timeline of technical evolution
+                        </p>
+                        <p className="text-xs font-bold tracking-wider text-[var(--text-muted)] animate-pulse hidden sm:block">
+                            SCROLL DOWN TO EXPLORE ↓
+                        </p>
+                        <p className="text-xs font-bold tracking-wider text-[var(--text-muted)] animate-pulse sm:hidden">
+                            SWIPE UP TO EXPLORE ↓
+                        </p>
                     </div>
 
-                    {/* Timeline Cards */}
-                    <div className="flex flex-col gap-16 sm:gap-24 w-full">
-                        {experiences.map((exp, index) => (
-                            <TimelineCard key={index} exp={exp} index={index} />
-                        ))}
+                    {/* Tracking Line Map container */}
+                    <div className="relative max-w-[1400px] mx-auto mb-10 px-6 sm:px-10 lg:px-20 hidden md:block z-20">
+                         <div className="relative w-full h-[1px] bg-[rgba(var(--border-rgb),0.2)]">
+                            {/* Glow Progress Line */}
+                            <motion.div 
+                                className="absolute left-0 top-1/2 -translate-y-1/2 h-[3px] shadow-[0_0_15px_rgba(var(--primary-rgb),0.8)]"
+                                style={{ 
+                                    width: progressWidth,
+                                    background: "linear-gradient(to right, var(--primary), var(--secondary))" 
+                                }}
+                            />
+
+                            {/* Timeline Nodes */}
+                            {experiences.map((exp, index) => (
+                                <div
+                                    key={index}
+                                    className="absolute top-1/2 -translate-y-1/2"
+                                    style={{ left: `${(index / (experiences.length - 1)) * 100}%` }}
+                                >
+                                    <button
+                                        onClick={() => handleNodeClick(index)}
+                                        className="relative -translate-x-1/2 w-3 h-3 rounded-full bg-[var(--card-bg)] border-2 transition-all duration-300 hover:scale-[1.7] focus:outline-none group cursor-pointer"
+                                        style={{ 
+                                            borderColor: "rgba(var(--border-rgb), 0.8)",
+                                            boxShadow: "0 0 10px rgba(0,0,0,0.2)"
+                                        }}
+                                        aria-label={`Scroll to ${exp.company}`}
+                                    >
+                                        {/* Hover Tooltip */}
+                                        <span className="absolute top-full left-1/2 -translate-x-1/2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity bg-[rgba(var(--border-rgb),0.05)] backdrop-blur-xl px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap border border-[rgba(var(--border-rgb),0.1)] shadow-xl pointer-events-none tracking-wide" style={{ color: "var(--text)" }}>
+                                            {exp.date.split(" ")[0]} {exp.date.split(" ")[1]} <span className="text-[var(--primary)] mx-1">•</span> {exp.company.replace(" (Remote)", "").split(",")[0]}
+                                        </span>
+                                    </button>
+                                </div>
+                            ))}
+
+                            {/* Interactive Moving Dot */}
+                            <motion.div 
+                                className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-[var(--bg)] border-[3px] border-[var(--primary)] rounded-full shadow-[0_0_15px_rgba(var(--primary-rgb),1)] z-10 pointer-events-none"
+                                style={{ 
+                                    left: progressWidth,
+                                    x: "-50%"
+                                }}
+                            />
+                         </div>
+                    </div>
+
+                    {/* Horizontal Scrolling Area via Y-Axis Transform */}
+                    <div className="relative w-full overflow-hidden flex items-start py-8">
+                        <motion.div 
+                            style={{ x: xTransform }}
+                            className="flex items-start gap-6 sm:gap-8 lg:gap-14 px-4 sm:px-10 lg:px-20 w-max pb-14 pt-4 relative"
+                        >
+                            {experiences.map((exp, index) => (
+                                <div key={index} className="shrink-0 w-[90vw] md:w-[650px] lg:w-[750px]">
+                                    <SaaSTimelineCard exp={exp} index={index} />
+                                </div>
+                            ))}
+                        </motion.div>
                     </div>
                 </div>
             </div>
@@ -125,72 +219,92 @@ const ExperienceSection = () => {
     );
 };
 
-const TimelineCard = ({ exp, index }) => {
-    const ref = useRef(null);
-    const inView = useInView(ref, { amount: 0.3, once: true });
-
+const SaaSTimelineCard = ({ exp, index }) => {
     return (
         <motion.div
-            ref={ref}
             initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-            transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
-            className={`relative flex flex-col md:flex-row items-start md:items-center gap-6 sm:gap-10 ${index % 2 === 0 ? "md:flex-row-reverse" : ""
-                }`}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ amount: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.1, type: "spring", stiffness: 100, damping: 20 }}
+            whileHover={{ y: -8, scale: 1.01 }}
+            className="group relative flex flex-col rounded-3xl overflow-hidden"
+            style={{
+                backgroundColor: "var(--card-bg)",
+                backdropFilter: "blur(24px)",
+                border: "1px solid rgba(var(--border-rgb), 0.2)",
+                boxShadow: "0 10px 40px -10px rgba(0,0,0,0.1)",
+            }}
         >
-            {/* Connector Dot */}
-            <motion.div
-                className="absolute left-6 sm:left-8 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 top-0 md:top-1/2 w-5 sm:w-6 h-5 sm:h-6 rounded-full flex items-center justify-center z-10"
+            {/* The SaaS Glow on Hover */}
+            <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-700"
                 style={{
-                    backgroundColor: "var(--bg)",
-                    borderWidth: "3px",
-                    borderColor: "var(--primary)",
+                    background: "radial-gradient(1200px circle at top left, rgba(var(--primary-rgb),0.06), transparent 60%)"
                 }}
-                animate={{
-                    boxShadow: [
-                        "0 0 0 rgba(var(--primary-rgb), 0.2)",
-                        "0 0 15px rgba(var(--secondary-rgb), 0.6)",
-                        "0 0 0 rgba(var(--primary-rgb), 0.2)",
-                    ],
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
-            >
-                <div className="scale-75 text-[var(--primary)]">{exp.icon}</div>
-            </motion.div>
+            />
+            
+            {/* Top Border Neon Line */}
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[rgba(var(--border-rgb),0.2)] group-hover:via-[var(--primary)] to-transparent transition-all duration-700 opacity-50 group-hover:opacity-100" />
+            
+            <div className="flex flex-col relative z-10 p-6 sm:p-8 md:p-10">
+                {/* Header Area */}
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-8">
+                    <div className="flex items-center gap-4 sm:gap-6">
+                        {/* Premium Icon box */}
+                        <div 
+                            className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex flex-shrink-0 items-center justify-center relative overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.3)]"
+                            style={{
+                                backgroundColor: "rgba(var(--primary-rgb), 0.05)",
+                                border: "1px solid rgba(var(--primary-rgb), 0.2)",
+                            }}
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] opacity-10 group-hover:opacity-20 transition-opacity duration-300" />
+                            <div className="text-[var(--primary)] z-10 transition-transform duration-500 group-hover:scale-110">
+                                {exp.icon}
+                            </div>
+                        </div>
 
-            {/* Card */}
-            <motion.div
-                whileHover={{ y: -5 }}
-                className="relative rounded-2xl p-6 sm:p-8 md:w-[45%] w-[calc(100%-3rem)] ml-12 sm:ml-16 md:ml-0 transition-all duration-300 border"
-                style={{
-                    backgroundColor: "var(--card-bg)",
-                    borderColor: "rgba(var(--border-rgb), 0.3)",
-                    backdropFilter: "blur(16px)",
-                    boxShadow: "0 8px 30px rgba(0,0,0,0.03)",
-                }}
-            >
-                <div
-                    className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 pointer-events-none transition-opacity duration-300"
-                    style={{
-                        background: "linear-gradient(to bottom right, rgba(var(--primary-rgb), 0.05), rgba(var(--secondary-rgb), 0.05), transparent)",
-                    }}
-                />
+                        <div>
+                            <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight mb-2 transition-colors duration-300 group-hover:text-[var(--primary)]" style={{ color: "var(--text)" }}>
+                                {exp.role}
+                            </h3>
+                            <div className="flex flex-wrap items-center gap-3">
+                                <span className="flex items-center gap-1.5 px-3 py-1 bg-[rgba(var(--border-rgb),0.05)] rounded-md text-sm font-semibold border" style={{ borderColor: 'rgba(var(--border-rgb),0.1)', color: "var(--text)" }}>
+                                    <Building size={14} className="text-[var(--primary)]" />
+                                    {exp.company}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
 
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold flex flex-wrap items-center gap-2 mb-1" style={{ color: "var(--text)" }}>
-                    {exp.role}
-                </h3>
-                <p className="text-xs sm:text-sm md:text-base mb-4 font-medium" style={{ color: "var(--primary)" }}>
-                    {exp.duration}
-                </p>
+                    {/* Date Badge */}
+                    <div className="shrink-0 self-start mt-2 md:mt-0">
+                        <span className="flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase shadow-sm transition-colors duration-300 group-hover:border-[var(--primary)] group-hover:bg-[rgba(var(--primary-rgb),0.03)]"
+                              style={{ 
+                                  backgroundColor: "rgba(var(--border-rgb), 0.02)", 
+                                  color: "var(--text-muted)",
+                                  border: "1px solid rgba(var(--border-rgb), 0.15)"
+                              }}>
+                            <Calendar size={12} className="text-[var(--primary)]" />
+                            {exp.date}
+                        </span>
+                    </div>
+                </div>
 
-                <ul className="list-disc list-inside space-y-2 leading-relaxed text-sm sm:text-base" style={{ color: "var(--text-muted)" }}>
+                {/* Details Array */}
+                <ul className="flex flex-col space-y-3.5 mt-2">
                     {exp.details.map((item, i) => (
-                        <li key={i} className="pl-1">
-                            <span className="relative -left-2" style={{ color: "var(--text)" }}>{item}</span>
+                        <li key={i} className="flex items-start gap-4 group/item transition-transform duration-300 hover:translate-x-1.5">
+                            <span className="mt-1 flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[rgba(var(--border-rgb),0.1)] border border-[rgba(var(--border-rgb),0.1)] group-hover/item:bg-[var(--primary)] group-hover/item:border-transparent group-hover/item:shadow-[0_0_10px_rgba(var(--primary-rgb),0.4)] transition-all duration-300">
+                                <CheckCircle2 size={12} className="text-[var(--text-muted)] group-hover/item:text-[var(--bg)] transition-colors duration-300" strokeWidth={3} />
+                            </span>
+                            <span className="text-sm sm:text-base leading-relaxed group-hover/item:text-[var(--text)] transition-colors duration-300" style={{ color: "var(--text-muted)" }}>
+                                {item}
+                            </span>
                         </li>
                     ))}
                 </ul>
-            </motion.div>
+            </div>
         </motion.div>
     );
 };
