@@ -16,7 +16,7 @@ export default function Navbar({ resumeUrl }) {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
-    const navLinks = ["Home", "About", "Experience", "Skills", "Projects", "Contact","Test"];
+    const navLinks = ["Home", "About", "Experience", "Skills", "Projects", "Contact","Test-by-nishant"];
 
     // Detect scroll direction
     useEffect(() => {
