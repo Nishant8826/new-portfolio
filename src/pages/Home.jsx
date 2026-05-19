@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 import { projects } from "../data/projects";
 import Contact from "../components/Contact";
-import resumeUrl from '../assets/Nishant-Rathore-SD2.pdf'
+import resumeUrl from '../assets/Nishant_Rathore_Resume.pdf'
 import ExperienceSection from "../components/ExperienceSection";
 import { useSelector } from "react-redux";
 import ThemeSelector from "../components/ThemeSelector";

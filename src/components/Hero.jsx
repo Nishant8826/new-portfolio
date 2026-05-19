@@ -40,7 +40,7 @@ export default function Hero() {
                     bg-[length:200%_200%] animate-gradientMove
                     bg-clip-text text-transparent"
                 >
-                    Turning Ideas Into <br className="hidden sm:block" /> Scalable Digital Realities
+                    Full Stack & <br className="hidden sm:block" /> DevOps Engineer
                 </motion.h1>
 
                 <motion.p
@@ -50,28 +50,7 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.8 }}
                 >
-                    I’m a{" "}
-                    <span className="font-semibold text-[var(--primary)]">
-                        Full Stack Developer
-                    </span>{" "}
-                    who blends{" "}
-                    <span className="font-semibold text-[var(--secondary)]">
-                        modern frontend
-                    </span>{" "}
-                    technologies like{" "}
-                    <span className="font-semibold">
-                        React, React Native, and Tailwind
-                    </span>{" "}
-                    with{" "}
-                    <span className="font-semibold text-[var(--primary)]">
-                        powerful backend
-                    </span>{" "}
-                    stacks —{" "}
-                    <span className="font-semibold">
-                        Node.js, Express, and MongoDB
-                    </span>
-                    . Passionate about performance, animation, and clean
-                    architecture.
+                    Architecting scalable <span className="font-semibold text-[var(--primary)]">Web & Mobile</span> solutions on the <span className="font-semibold text-[var(--secondary)]">MERN / MEAN</span> stacks. Streamlining deployments with robust cloud infrastructure using <span className="font-semibold text-[var(--primary)]">AWS, Docker, Kubernetes, and Terraform</span>.
                 </motion.p>
 
                 {/* === CTA BUTTONS === */}
@@ -154,15 +133,35 @@ export default function Hero() {
                 <motion.div
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                    className="relative group"
+                    className="relative group flex items-center justify-center"
                 >
                     <motion.img
                         src={myPic}
                         alt="Profile"
                         className="w-56 h-56 sm:w-72 sm:h-72 lg:w-[28rem] lg:h-[28rem] rounded-full object-cover
-                        border-4 border-[var(--bg)] shadow-2xl"
+                        border-4 border-[var(--bg)] shadow-2xl relative z-10"
                     />
 
+                    {/* Professional Stats Badges */}
+                    <div className="absolute -bottom-4 -left-4 sm:bottom-0 sm:left-0 lg:bottom-10 lg:-left-6 px-4 py-3 sm:px-5 sm:py-3 rounded-xl bg-[var(--bg-soft)] backdrop-blur-md border border-[var(--primary)]/30 shadow-xl flex items-center gap-3 z-20 hover:scale-105 transition-transform duration-300">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[var(--primary)]/10 flex items-center justify-center text-[var(--primary)] font-bold text-sm sm:text-base">
+                            10+
+                        </div>
+                        <div className="text-left">
+                            <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[var(--text-muted)] font-semibold leading-tight">Enterprise</p>
+                            <p className="text-xs sm:text-sm font-bold text-[var(--text)] leading-tight">Projects</p>
+                        </div>
+                    </div>
+
+                    <div className="absolute -top-4 -right-4 sm:top-0 sm:right-0 lg:top-10 lg:-right-6 px-4 py-3 sm:px-5 sm:py-3 rounded-xl bg-[var(--bg-soft)] backdrop-blur-md border border-[var(--secondary)]/30 shadow-xl flex items-center gap-3 z-20 hover:scale-105 transition-transform duration-300">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[var(--secondary)]/10 flex items-center justify-center text-[var(--secondary)] font-bold text-sm sm:text-base">
+                            ☁️
+                        </div>
+                        <div className="text-left">
+                            <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[var(--text-muted)] font-semibold leading-tight">Cloud & DevOps</p>
+                            <p className="text-xs sm:text-sm font-bold text-[var(--text)] leading-tight">Mastery</p>
+                        </div>
+                    </div>
                 </motion.div>
             </motion.div>
 
