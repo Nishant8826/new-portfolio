@@ -14,6 +14,15 @@ import {
     FaFigma,
     FaMicrosoft,
     FaServer,
+    FaPython,
+    FaLinux,
+    FaJenkins,
+    FaStripe,
+    FaLock,
+    FaUserShield,
+    FaRobot,
+    FaBrain,
+    FaCodeBranch,
 } from "react-icons/fa";
 
 import {
@@ -31,6 +40,22 @@ import {
     SiOpenai,
     SiMaterialdesign,
     SiKnexdotjs,
+    SiNextdotjs,
+    SiRedux,
+    SiSwagger,
+    SiMysql,
+    SiMariadb,
+    SiGooglecloud,
+    SiKubernetes,
+    SiTerraform,
+    SiAnsible,
+    SiNginx,
+    SiPrometheus,
+    SiGrafana,
+    SiJsonwebtokens,
+    SiRazorpay,
+    SiN8N,
+    SiGooglegemini,
 } from "react-icons/si";
 
 import {
@@ -54,6 +79,8 @@ export const skills = [
     { name: "Tailwind", icon: SiTailwindcss, color: "#38BDF8", category: "frontend" },
     { name: "Bootstrap", icon: FaBootstrap, color: "#7952B3", category: "frontend" },
     { name: "Material UI", icon: SiMaterialdesign, color: "#007FFF", category: "frontend" },
+    { name: "Next.js", icon: SiNextdotjs, color: "#000000", category: "frontend" },
+    { name: "Redux", icon: SiRedux, color: "#764ABC", category: "frontend" },
 
     // ⚙️ Backend
     { name: "Node.js", icon: FaNodeJs, color: "#3C873A", category: "backend" },
@@ -66,10 +93,29 @@ export const skills = [
     { name: "MongoDB", icon: SiMongodb, color: "#4EA94B", category: "backend" },
     { name: "Redis", icon: SiRedis, color: "#DC382D", category: "backend" },
     { name: "Knex.js", icon: SiKnexdotjs, color: "#D97706", category: "backend" },
-    { name: "AWS", icon: FaAws, color: "#FF9900", category: "backend" },
     { name: "Mongoose", icon: IoMdConstruct, color: "#6B7280", category: "backend" },
     { name: "Socket.io", icon: SiSocketdotio, color: "#000000", category: "backend" },
-    { name: "Docker", icon: FaDocker, color: "#0DB7ED", category: "backend" },
+    { name: "Python", icon: FaPython, color: "#3776AB", category: "backend" },
+    { name: "MySQL", icon: SiMysql, color: "#4479A1", category: "backend" },
+    { name: "MariaDB", icon: SiMariadb, color: "#003545", category: "backend" },
+    { name: "Swagger", icon: SiSwagger, color: "#85EA2D", category: "backend" },
+    { name: "JWT", icon: SiJsonwebtokens, color: "#000000", category: "backend" },
+    { name: "OAuth", icon: FaLock, color: "#3C3C3C", category: "backend" },
+    { name: "RBAC", icon: FaUserShield, color: "#2E86C1", category: "backend" },
+
+    // devops
+    { name: "Docker", icon: FaDocker, color: "#0DB7ED", category: "devops" },
+    { name: "AWS", icon: FaAws, color: "#FF9900", category: "devops" },
+    { name: "GCP", icon: SiGooglecloud, color: "#4285F4", category: "devops" },
+    { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5", category: "devops" },
+    { name: "Terraform", icon: SiTerraform, color: "#7B42BC", category: "devops" },
+    { name: "Ansible", icon: SiAnsible, color: "#EE0000", category: "devops" },
+    { name: "Jenkins", icon: FaJenkins, color: "#D24939", category: "devops" },
+    { name: "CI/CD", icon: FaCodeBranch, color: "#2088FF", category: "devops" },
+    { name: "Prometheus", icon: SiPrometheus, color: "#E6522C", category: "devops" },
+    { name: "Grafana", icon: SiGrafana, color: "#F46800", category: "devops" },
+    { name: "Linux", icon: FaLinux, color: "#FCC624", category: "devops" },
+    { name: "Nginx", icon: SiNginx, color: "#009639", category: "devops" },
 
     // 🔧 Other
     { name: "AI", icon: SiOpenai, color: "#22D3EE", category: "other" },
@@ -80,4 +126,11 @@ export const skills = [
     { name: "MS Office", icon: FaMicrosoft, color: "#2563EB", category: "other" },
     { name: "Postman", icon: SiPostman, color: "#FF6C37", category: "other" },
     { name: "Jira / Confluence", icon: SiJira, color: "#2684FF", category: "other" },
+    { name: "FCM", icon: SiFirebase, color: "#FFA611", category: "other" },
+    { name: "Razorpay", icon: SiRazorpay, color: "#02042B", category: "other" },
+    { name: "Stripe", icon: FaStripe, color: "#008CDD", category: "other" },
+    { name: "n8n", icon: SiN8N, color: "#FF6666", category: "other" },
+    { name: "LLM", icon: FaBrain, color: "#FF9900", category: "other" },
+    { name: "Prompt Eng.", icon: FaRobot, color: "#4B0082", category: "other" },
+    { name: "Gemini", icon: SiGooglegemini, color: "#8E75B2", category: "other" },
 ];

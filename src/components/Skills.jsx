@@ -35,6 +35,7 @@ export default function Skills() {
         [speed]
     );
 
+    const devops = skills.filter((s) => s.category === "devops");
     const frontend = skills.filter((s) => s.category === "frontend");
     const backend = skills.filter((s) => s.category === "backend");
     const other = skills.filter((s) => s.category === "other");
@@ -76,11 +77,39 @@ export default function Skills() {
 
             {/* Carousel Rows */}
             <div className="relative max-w-7xl mx-auto space-y-8 sm:space-y-12 overflow-hidden px-2 sm:px-6">
+                {/* DevOps Row */}
+                <motion.div
+                    key={`devops-${speed}`}
+                    className="flex  whitespace-nowrap"
+                    variants={marquee("left")}
+                    animate="animate"
+                >
+                    {[...devops, ...devops].map((skill, i) => {
+                        const Icon = skill.icon;
+                        return (
+                            <div
+                                key={i}
+                                className="inline-flex flex-col items-center justify-center text-center min-w-[90px] sm:min-w-[120px]"
+                            >
+                                <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-2xl
+                                    bg-[var(--bg-soft)] border border-[var(--border)] shadow-sm hover:shadow-lg transition-all"
+                                >
+                                    <Icon className="text-2xl sm:text-3xl" style={{ color: "var(--primary)" }} />
+                                </div>
+                                <p className="mt-2 text-xs sm:text-sm font-semibold" style={{ color: "var(--text)" }}>
+                                    {skill.name}
+                                </p>
+                            </div>
+                        );
+                    })}
+                </motion.div>
+
+
                 {/* Frontend Row */}
                 <motion.div
                     key={`frontend-${speed}`}
-                    className="flex gap-8 sm:gap-12 whitespace-nowrap"
-                    variants={marquee("left")}
+                    className="flex whitespace-nowrap"
+                    variants={marquee("right")}
                     animate="animate"
                 >
                     {[...frontend, ...frontend].map((skill, i) => {
@@ -106,8 +135,8 @@ export default function Skills() {
                 {/* Backend Row */}
                 <motion.div
                     key={`backend-${speed}`}
-                    className="flex gap-8 sm:gap-12 whitespace-nowrap"
-                    variants={marquee("right")}
+                    className="flex  whitespace-nowrap"
+                    variants={marquee("left")}
                     animate="animate"
                 >
                     {[...backend, ...backend].map((skill, i) => {
@@ -133,8 +162,8 @@ export default function Skills() {
                 {/* Other Row */}
                 <motion.div
                     key={`other-${speed}`}
-                    className="flex gap-8 sm:gap-12 whitespace-nowrap"
-                    variants={marquee("left")}
+                    className="flex  whitespace-nowrap"
+                    variants={marquee("right")}
                     animate="animate"
                 >
                     {[...other, ...other].map((skill, i) => {

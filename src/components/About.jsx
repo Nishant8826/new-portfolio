@@ -92,7 +92,7 @@ export default function About() {
             }}
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 sm:mb-8 leading-tight drop-shadow-sm"
           >
-            Crafting Code with Precision and Passion
+            Architecting Scalable Cloud & Code Solutions
           </motion.h2>
 
           <motion.p
@@ -103,10 +103,9 @@ export default function About() {
             style={{ color: "var(--text-muted)" }}
             className="text-base sm:text-lg md:text-xl leading-relaxed mb-6"
           >
-            I’m a <span style={{ color: "var(--primary)", fontWeight: 600 }}>Full Stack Developer</span> with
-            3+ years of experience transforming ideas into{" "}
-            <span style={{ color: "var(--secondary)", fontWeight: 600 }}>high-performing</span> and{" "}
-            <span style={{ color: "var(--accent-2)", fontWeight: 600 }}>design-driven</span> digital experiences.
+            I’m a <span style={{ color: "var(--primary)", fontWeight: 600 }}>Full Stack & DevOps Engineer</span> specializing in 
+            architecting robust <span style={{ color: "var(--secondary)", fontWeight: 600 }}>Web & Mobile</span> applications across the 
+            <span style={{ color: "var(--accent-2)", fontWeight: 600 }}> MERN & MEAN</span> stacks.
           </motion.p>
 
           <motion.p
@@ -117,9 +116,8 @@ export default function About() {
             style={{ color: "var(--text-muted)" }}
             className="text-sm sm:text-base leading-relaxed mb-8 sm:mb-10"
           >
-            I love merging clean architecture, fluid animation, and efficient code to build{" "}
-            <span style={{ color: "var(--secondary)", fontWeight: 600 }}>premium interactive experiences</span> —
-            where creativity meets performance.
+            I merge deep backend expertise with automated infrastructure to build and deploy highly available systems using {" "}
+            <span style={{ color: "var(--secondary)", fontWeight: 600 }}>AWS, Docker, Kubernetes, and Terraform</span> — ensuring performance and reliability at every scale.
           </motion.p>
 
           <motion.div
@@ -199,8 +197,8 @@ export default function About() {
                 className="text-center"
                 style={{ color: "var(--text)" }}
               >
-                <span className="text-5xl sm:text-7xl">👨‍💻</span>
-                <p className="mt-3 font-semibold text-base sm:text-lg">Passionate Developer</p>
+                <span className="text-5xl sm:text-7xl">☁️</span>
+                <p className="mt-3 font-semibold text-base sm:text-lg">Cloud & Full Stack</p>
               </motion.div>
             </div>
           </div>
