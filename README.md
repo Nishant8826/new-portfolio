@@ -1,6 +1,12 @@
-## Run with Docker
+## Build and Run with Docker
 
-Pull and run the portfolio container using Docker:
+To build the Docker image locally:
+
+```bash
+docker build -t rnishant428/react-portfolio:latest .
+```
+
+Pull (or use the local build) and run the portfolio container:
 
 ```bash
 docker run -d -p 8081:80 --name my-portfolio rnishant428/react-portfolio:latest
