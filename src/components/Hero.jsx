@@ -37,9 +37,9 @@ export default function Hero() {
                 <motion.h1
                     style={{ x: mouse.x * 20, y: mouse.y * 20 }}
                     className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1]
-                    bg-[linear-gradient(90deg,var(--accent-1),var(--secondary),var(--accent-2))]
-                    bg-[length:200%_200%] animate-gradientMove
-                    bg-clip-text text-transparent"
+                    bg-[linear-gradient(to_right,var(--primary),var(--secondary),var(--accent-2),var(--primary))]
+                    bg-[length:300%_auto] animate-gradientMove
+                    bg-clip-text text-transparent drop-shadow-sm"
                 >
                     Full Stack & <br className="hidden sm:block" /> DevOps Engineer
                 </motion.h1>
@@ -144,7 +144,7 @@ export default function Hero() {
                     />
 
                     {/* Professional Stats Notifications */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 20, scale: 0.9 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{ delay: 0.8, type: 'spring', bounce: 0.4 }}
@@ -152,7 +152,7 @@ export default function Hero() {
                     >
                         {/* Speech Bubble Tail (Pointing Right) */}
                         <div className="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-[var(--bg)] border-t border-r border-[var(--primary)]/20 rotate-45 z-[-1]" />
-                        
+
                         <div className="relative mt-0.5 shrink-0">
                             <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-[var(--primary)] to-purple-500 flex items-center justify-center text-white font-bold shadow-lg text-[10px] sm:text-xs">
                                 10+
@@ -170,7 +170,7 @@ export default function Hero() {
                     </motion.div>
 
 
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: -20, scale: 0.9 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{ delay: 1, type: 'spring', bounce: 0.4 }}
@@ -211,31 +211,33 @@ export default function Hero() {
                 rounded-full blur-[100px] sm:blur-[140px] opacity-40 sm:opacity-60 -z-50"
             />
 
-            {/* === SCROLL DOWN VERTICE / CHEVRON === */}
-            <motion.div
-                className="absolute bottom-12 sm:bottom-10 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--primary)] transition-colors cursor-pointer"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, y: [0, 8, 0] }}
-                transition={{ 
-                    delay: 1.5,
-                    y: { repeat: Infinity, duration: 1.5, ease: "easeInOut" }
-                }}
-                onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-            >
-                <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8" strokeWidth={1.5} />
-            </motion.div>
+            {/* === BOTTOM ELEMENTS === */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 w-full">
+                {/* === BOTTOM TAGLINE === */}
+                <motion.div
+                    className="text-[10px] sm:text-xs text-[var(--text-muted)] tracking-wider uppercase text-center"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.8 }}
+                    transition={{ delay: 1.8 }}
+                >
+                    🚀 Frontend | Backend | DevOps | Cloud | UI/UX
+                </motion.div>
 
-            {/* === BOTTOM TAGLINE === */}
-            <motion.div
-                className="absolute bottom-4 text-xs
-                text-[var(--text-muted)]
-                tracking-wider uppercase"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.8 }}
-                transition={{ delay: 1.8 }}
-            >
-                🚀 Frontend | Backend | DevOps | Cloud | UI/UX
-            </motion.div>
+                {/* === SCROLL DOWN VERTICE / CHEVRON === */}
+                <motion.div
+                    className="flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--primary)] transition-colors cursor-pointer"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, y: [0, 8, 0] }}
+                    transition={{
+                        delay: 1.5,
+                        y: { repeat: Infinity, duration: 1.5, ease: "easeInOut" }
+                    }}
+                    onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+                >
+                    <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8" strokeWidth={1.5} />
+                </motion.div>
+            </div>
+
         </motion.section>
     );
 }

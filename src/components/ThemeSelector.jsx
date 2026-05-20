@@ -3,25 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { setTheme } from "../store/themeSlice";
 import { FaCircle, FaCheck } from "react-icons/fa";
 import { BsPalette } from "react-icons/bs";
+import { motion, AnimatePresence } from "framer-motion";
 
 const themes = [
-    // Core (must-have)
-    { id: "theme-aurora", label: "Aurora", color: "#6366F1" },        // Indigo – modern SaaS
-    { id: "theme-nebula", label: "Nebula", color: "#0EA5E9" },        // Sky blue – clean tech
-    { id: "theme-forestmist", label: "Forest Mist", color: "#10B981" }, // Calm green
-
-    // Elegant neutrals
-    { id: "theme-graphite", label: "Graphite", color: "#374151" },   // Dark gray – luxury
-    { id: "theme-ivory", label: "Ivory", color: "#E5E7EB" },         // Soft light – editorial
-
-    // High-end accent tones
-    { id: "theme-royalpurple", label: "Royal Purple", color: "#7C3AED" }, // Creative premium
-    { id: "theme-oceanic", label: "Oceanic", color: "#0284C7" },     // Deep blue – enterprise
-    { id: "theme-amberglow", label: "Amber Glow", color: "#F59E0B" }, // Gold accent – luxury
-
-    // Dark-first themes
-    { id: "theme-obsidian", label: "Obsidian", color: "#020617" },   // Ultra-dark premium
-    { id: "theme-midnight", label: "Midnight", color: "#0F172A" },   // Navy dark
+    // Essential Modern Trends
+    { id: "theme-obsidian", label: "Obsidian Dark", color: "#020617" }, // Deep dark - #1 trend for dev portfolios
+    { id: "theme-graphite", label: "Graphite Slate", color: "#374151" }, // Muted dark gray - sophisticated
+    { id: "theme-ivory", label: "Minimal Light", color: "#E5E7EB" },    // Clean, high-contrast light mode
+    { id: "theme-aurora", label: "Indigo SaaS", color: "#6366F1" },     // Classic modern SaaS primary
+    { id: "theme-nebula", label: "Oceanic Tech", color: "#0EA5E9" },    // Trustworthy enterprise blue
+    { id: "theme-forestmist", label: "Emerald Tech", color: "#10B981" }, // Fresh, tech-focused green
+    { id: "theme-amberglow", label: "Amber Luxury", color: "#F59E0B" }, // Warm gold - premium & fintech
 ];
 
 const ThemeSelector = () => {
@@ -30,43 +22,80 @@ const ThemeSelector = () => {
 
     const [open, setOpen] = useState(false);
 
-    const selected = themes.find((t) => t.id === currentTheme);
-
     return (
-        <div className="relative">
+        <div 
+            className="relative"
+            onMouseEnter={() => setOpen(true)}
+            onMouseLeave={() => setOpen(false)}
+        >
             {/* Button */}
-            <button
-                onClick={() => setOpen(!open)}
-                className="flex items-center gap-2 p-2 rounded-xl border border-indigo-300 bg-white shadow-md hover:shadow-lg transition"
+            <motion.button
+                whileHover={{ scale: 1.1, rotate: 10 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 p-3 rounded-full bg-[var(--bg-soft)] border border-[rgba(var(--border-rgb),0.15)] shadow-lg hover:shadow-[var(--primary)]/20 hover:border-[var(--primary)]/50 transition-colors duration-300"
             >
-                <BsPalette className="text-indigo-500" size={30} />
-                {/* <span className="font-semibold">{selected?.label}</span> */}
-            </button>
+                <BsPalette className="text-[var(--primary)]" size={24} />
+            </motion.button>
 
             {/* Dropdown */}
-            {open && (
-                <div className="absolute bottom-14 left-[-200px] w-48 bg-white shadow-xl rounded-xl z-50 p-2">
-                    {themes.map((theme) => (
-                        <button
-                            key={theme.id}
-                            onClick={() => {
-                                dispatch(setTheme(theme.id));
-                                setOpen(false);
-                            }}
-                            className="w-full flex items-center justify-between px-3 py-2 hover:bg-gray-100 rounded-lg transition"
-                        >
-                            <div className="flex items-center gap-2">
-                                <FaCircle size={12} color={theme.color} />
-                                <span>{theme.label}</span>
-                            </div>
+            <AnimatePresence>
+                {open && (
+                    <motion.div 
+                        initial={{ opacity: 0, y: 15, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.9 }}
+                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                        className="absolute bottom-[calc(100%+16px)] right-0 sm:right-auto sm:left-[-180px] w-52 p-2 rounded-2xl bg-[rgba(var(--bg-rgb),0.7)] backdrop-blur-2xl border border-[rgba(var(--border-rgb),0.15)] shadow-2xl z-50 origin-bottom-right sm:origin-bottom"
+                    >
+                        <div className="grid gap-1">
+                            {themes.map((theme) => (
+                                <button
+                                    key={theme.id}
+                                    onClick={() => {
+                                        dispatch(setTheme(theme.id));
+                                        setOpen(false);
+                                    }}
+                                    className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all duration-300 group ${
+                                        currentTheme === theme.id 
+                                            ? 'bg-[var(--primary)]/10 text-[var(--primary)] font-bold' 
+                                            : 'hover:bg-[var(--bg-soft)] text-[var(--text)] hover:text-[var(--primary)]'
+                                    }`}
+                                >
+                                    <div className="flex items-center gap-3">
+                                        <div className="relative flex items-center justify-center">
+                                            <FaCircle size={14} color={theme.color} className="drop-shadow-sm" />
+                                            {currentTheme === theme.id && (
+                                                <motion.div 
+                                                    layoutId="theme-active-ring"
+                                                    className="absolute -inset-1 rounded-full border border-current opacity-50"
+                                                    style={{ borderColor: theme.color }}
+                                                    transition={{ duration: 0.3 }}
+                                                />
+                                            )}
+                                        </div>
+                                        <span className="text-[13px] tracking-wide">{theme.label}</span>
+                                    </div>
 
-                            {/* Checkmark */}
-                            {currentTheme === theme.id && (
-                                <FaCheck size={14} className="text-gray-800" />
-                            )}
-                        </button>
-                    ))}
-                </div>
+                                    {/* Checkmark */}
+                                    {currentTheme === theme.id && (
+                                        <motion.div
+                                            initial={{ scale: 0 }}
+                                            animate={{ scale: 1 }}
+                                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                        >
+                                            <FaCheck size={12} className="text-[var(--primary)]" />
+                                        </motion.div>
+                                    )}
+                                </button>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+            
+            {/* Invisible bridge to prevent mouseleave gap */}
+            {open && (
+                <div className="absolute bottom-full right-0 w-full h-4 z-40" />
             )}
         </div>
     );

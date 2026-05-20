@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter, Mail, ArrowUp, Zap, MapPin, ExternalLink } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { socialLinks } from "../data/socialLinks";
+import { skills } from "../data/skills";
 
 export default function Footer() {
   const [localTime, setLocalTime] = useState("");
@@ -17,16 +19,20 @@ export default function Footer() {
     return () => clearInterval(timer);
   }, []);
 
-  const techStack = ["React", "Next.js", "TypeScript", "TailwindCSS", "Node.js", "Docker", "AWS", "Three.js", "Framer", "Supabase", "PostgreSQL", "MongoDB", "Figma"];
+  const techStack = useMemo(() => {
+    return [...skills]
+      .sort(() => 0.5 - Math.random())
+      .map((skill) => skill.name);
+  }, []);
 
   return (
-    <footer className="relative pt-32 pb-12 bg-[var(--bg)] border-t border-[rgba(var(--border-rgb),0.05)] overflow-hidden">
+    <footer className="relative pt-32 bg-[var(--bg)] border-t border-[rgba(var(--border-rgb),0.05)] overflow-hidden">
       
       {/* Subtle Technology Scroller */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden py-4 border-b border-[rgba(var(--border-rgb),0.02)] bg-[var(--bg-soft)]/10">
-        <div className="flex whitespace-nowrap animate-marquee select-none pointer-events-none">
+      <div className="absolute top-0 left-0 w-full overflow-hidden py-4 border-b border-[rgba(var(--border-rgb),0.02)] bg-[var(--bg-soft)]/10 group cursor-default">
+        <div className="flex whitespace-nowrap animate-marquee select-none">
           {[...techStack, ...techStack].map((tech, i) => (
-            <div key={i} className="flex items-center mx-12 gap-3 opacity-20">
+            <div key={i} className="flex items-center mx-12 gap-3 opacity-20 transition-opacity hover:opacity-100 cursor-pointer">
               <span className="w-1 h-1 rounded-full bg-[var(--primary)]" />
               <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--text)]">{tech}</span>
             </div>
@@ -34,7 +40,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 mt-16">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-24">
           
           {/* Brand Identity */}
@@ -70,21 +76,22 @@ export default function Footer() {
 
           {/* Connection */}
           <div className="space-y-8">
-            <h4 className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] opacity-50">connect</h4>
+            <h4 className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] opacity-50">lets collaborate</h4>
             <div className="flex flex-col gap-4">
-              <a href="mailto:nishant8826@gmail.com" className="flex flex-col group">
-                <span className="text-sm font-bold text-[var(--text)] group-hover:text-[var(--primary)] transition-colors">nishant8826@gmail.com</span>
-                <span className="text-[10px] font-medium text-[var(--text-muted)] opacity-50 group-hover:opacity-100 transition-opacity">Contact Me <ExternalLink size={10} className="inline ml-1" /></span>
+              <a href={`mailto:${socialLinks.email}`} target="_blank" rel="noopener noreferrer" className="flex flex-col group">
+                <span className="text-sm font-bold text-[var(--text)] group-hover:text-[var(--primary)] transition-colors">{socialLinks.email}</span>
+                <span className="text-[10px] font-medium text-[var(--text-muted)] opacity-50 group-hover:opacity-100 transition-opacity">Drop a message <ExternalLink size={10} className="inline ml-1" /></span>
               </a>
               <div className="flex items-center gap-3 pt-2">
                 {[
-                  { icon: <Github size={18} />, href: "https://github.com/Nishant8826" },
-                  { icon: <Linkedin size={18} />, href: "https://linkedin.com/in/nishant8826" },
-                  { icon: <Twitter size={18} />, href: "#" },
+                  { icon: <Github size={18} />, href: socialLinks.github },
+                  { icon: <Linkedin size={18} />, href: socialLinks.linkedin },
+                  { icon: <Twitter size={18} />, href: socialLinks.twitter },
                 ].map((soc, i) => (
                   <motion.a 
                     key={i} 
                     href={soc.href} 
+                    target="_blank"
                     whileHover={{ y: -4, color: "var(--primary)" }}
                     className="w-10 h-10 rounded-xl bg-[var(--bg-soft)] border border-[rgba(var(--border-rgb),0.1)] flex items-center justify-center text-[var(--text-muted)] transition-all shadow-sm"
                   >
@@ -136,7 +143,8 @@ export default function Footer() {
 
       <style jsx>{`
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-marquee { animation: marquee 60s linear infinite; }
+        .animate-marquee { animation: marquee 15s linear infinite; }
+        .group:hover .animate-marquee { animation-play-state: paused; }
       `}</style>
     </footer>
   );
