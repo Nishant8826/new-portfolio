@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, MessageSquare, Send, User, MapPin, Globe, CheckCircle2, Phone, Github, Linkedin, Twitter, ExternalLink, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { socialLinks } from "../data/socialLinks";
 
 export default function Contact() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -58,8 +59,8 @@ export default function Contact() {
                             </motion.div>
 
                             <motion.h2 variants={itemVariants} className="text-5xl lg:text-7xl font-bold tracking-tight text-[var(--text)] leading-[1.1]">
-                                Let's build <br /> 
-                                <span className="text-[var(--primary)]">something great</span> together.
+                                
+                                <span className="text-[var(--primary)]">Let's turn your vision into reality.</span>
                             </motion.h2>
 
                             <motion.p variants={itemVariants} className="text-lg text-[var(--text-muted)] font-medium leading-relaxed max-w-md italic opacity-80 font-serif">
@@ -69,10 +70,10 @@ export default function Contact() {
 
                         <motion.div variants={itemVariants} className="flex flex-col gap-6">
                             {[
-                                { icon: <Mail className="w-5 h-5" />, label: "Email Me", value: "rnishant428@gmail.com", href: "mailto:rnishant428@gmail.com" },
-                                { icon: <MapPin className="w-5 h-5" />, label: "Location", value: "New Delhi, India", href: "#" },
+                                { icon: <Mail className="w-5 h-5" />, label: "Email Me", value: socialLinks.email, href: `mailto:${socialLinks.email}` },
+                                { icon: <MapPin className="w-5 h-5" />, label: "Location", value: "New Delhi, India", href: "https://maps.google.com/?q=New+Delhi,+India" },
                             ].map((info, i) => (
-                                <a key={i} href={info.href} className="group flex items-center gap-6 p-1 hover:pl-2 transition-all duration-300">
+                                <a key={i} href={info.href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-6 p-1 hover:pl-2 transition-all duration-300">
                                     <div className="w-12 h-12 rounded-xl bg-[var(--bg-soft)] border border-[rgba(var(--border-rgb),0.1)] flex items-center justify-center text-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-white transition-all shadow-sm">
                                         {info.icon}
                                     </div>
@@ -89,11 +90,11 @@ export default function Contact() {
                             <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] opacity-50">Follow me</span>
                             <div className="flex gap-4">
                                 {[
-                                    { icon: <Github size={20} />, href: "https://github.com/Nishant8826" },
-                                    { icon: <Linkedin size={20} />, href: "https://linkedin.com/in/nishant8826" },
-                                    { icon: <Twitter size={20} />, href: "#" },
+                                    { icon: <Github size={20} />, href: socialLinks.github },
+                                    { icon: <Linkedin size={20} />, href: socialLinks.linkedin },
+                                    { icon: <Twitter size={20} />, href: socialLinks.twitter },
                                 ].map((soc, i) => (
-                                    <a key={i} href={soc.href} className="text-[var(--text-muted)] hover:text-[var(--primary)] transition-colors transform hover:scale-110">
+                                    <a key={i} href={soc.href} target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--primary)] transition-colors transform hover:scale-110">
                                         {soc.icon}
                                     </a>
                                 ))}
