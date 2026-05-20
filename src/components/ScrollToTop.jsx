@@ -14,7 +14,7 @@ export default function ScrollToTop() {
     visible && (
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-6 right-6 p-3 rounded-full shadow-lg transition"
+        className="fixed bottom-20 right-5 p-3 rounded-full shadow-lg transition z-50 hover:scale-110"
         style={{
           backgroundColor: "var(--primary)",
           color: "var(--text-on-primary)"

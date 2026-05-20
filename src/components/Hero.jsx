@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import myPic from "../assets/my-pic.jpg";
 import ThemeSelector from "./ThemeSelector";
 
@@ -142,26 +143,57 @@ export default function Hero() {
                         border-4 border-[var(--bg)] shadow-2xl relative z-10"
                     />
 
-                    {/* Professional Stats Badges */}
-                    <div className="absolute -bottom-4 -left-4 sm:bottom-0 sm:left-0 lg:bottom-10 lg:-left-6 px-4 py-3 sm:px-5 sm:py-3 rounded-xl bg-[var(--bg-soft)] backdrop-blur-md border border-[var(--primary)]/30 shadow-xl flex items-center gap-3 z-20 hover:scale-105 transition-transform duration-300">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[var(--primary)]/10 flex items-center justify-center text-[var(--primary)] font-bold text-sm sm:text-base">
-                            10+
+                    {/* Professional Stats Notifications */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{ delay: 0.8, type: 'spring', bounce: 0.4 }}
+                        className="absolute -bottom-4 -left-2 sm:-bottom-2 sm:-left-6 lg:bottom-6 lg:-left-16 p-2 sm:p-3 rounded-xl bg-[var(--bg)]/80 backdrop-blur-xl border border-[var(--primary)]/20 shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-start gap-2 sm:gap-3 z-20 hover:-translate-y-1 hover:shadow-[var(--primary)]/20 transition-all duration-300 w-40 sm:w-48"
+                    >
+                        {/* Speech Bubble Tail (Pointing Right) */}
+                        <div className="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-[var(--bg)] border-t border-r border-[var(--primary)]/20 rotate-45 z-[-1]" />
+                        
+                        <div className="relative mt-0.5 shrink-0">
+                            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-[var(--primary)] to-purple-500 flex items-center justify-center text-white font-bold shadow-lg text-[10px] sm:text-xs">
+                                10+
+                            </div>
+                            <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-500 border-2 border-[var(--bg)] rounded-full animate-pulse"></span>
                         </div>
-                        <div className="text-left">
-                            <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[var(--text-muted)] font-semibold leading-tight">Enterprise</p>
-                            <p className="text-xs sm:text-sm font-bold text-[var(--text)] leading-tight">Projects</p>
+                        <div className="text-left flex-1 min-w-0">
+                            <div className="flex justify-between items-center mb-0.5">
+                                <p className="text-[7px] sm:text-[8px] uppercase tracking-wider text-[var(--primary)] font-bold truncate">Achievement</p>
+                                <span className="text-[7px] sm:text-[8px] text-[var(--text-muted)] shrink-0 ml-1">Just now</span>
+                            </div>
+                            <p className="text-[10px] sm:text-xs font-bold text-[var(--text)] leading-tight mb-0.5 truncate">Enterprise Projects</p>
+                            <p className="text-[8px] sm:text-[9px] text-[var(--text-muted)] leading-snug hidden sm:block">Successfully delivered and scaled.</p>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="absolute -top-4 -right-4 sm:top-0 sm:right-0 lg:top-10 lg:-right-6 px-4 py-3 sm:px-5 sm:py-3 rounded-xl bg-[var(--bg-soft)] backdrop-blur-md border border-[var(--secondary)]/30 shadow-xl flex items-center gap-3 z-20 hover:scale-105 transition-transform duration-300">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[var(--secondary)]/10 flex items-center justify-center text-[var(--secondary)] font-bold text-sm sm:text-base">
-                            ☁️
+
+                    <motion.div 
+                        initial={{ opacity: 0, y: -20, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{ delay: 1, type: 'spring', bounce: 0.4 }}
+                        className="absolute -top-4 -right-2 sm:-top-2 sm:-right-6 lg:top-6 lg:-right-16 p-2 sm:p-3 rounded-xl bg-[var(--bg)]/80 backdrop-blur-xl border border-[var(--secondary)]/20 shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-start gap-2 sm:gap-3 z-20 hover:-translate-y-1 hover:shadow-[var(--secondary)]/20 transition-all duration-300 w-40 sm:w-48"
+                    >
+                        {/* Speech Bubble Tail (Pointing Left) */}
+                        <div className="absolute top-1/2 -left-1.5 -translate-y-1/2 w-3 h-3 bg-[var(--bg)] border-b border-l border-[var(--secondary)]/20 rotate-45 z-[-1]" />
+
+                        <div className="relative mt-0.5 shrink-0">
+                            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-[var(--secondary)] to-blue-500 flex items-center justify-center text-white font-bold shadow-lg text-xs sm:text-sm">
+                                ☁️
+                            </div>
+                            <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-blue-500 border-2 border-[var(--bg)] rounded-full animate-pulse"></span>
                         </div>
-                        <div className="text-left">
-                            <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[var(--text-muted)] font-semibold leading-tight">Cloud & DevOps</p>
-                            <p className="text-xs sm:text-sm font-bold text-[var(--text)] leading-tight">Mastery</p>
+                        <div className="text-left flex-1 min-w-0">
+                            <div className="flex justify-between items-center mb-0.5">
+                                <p className="text-[7px] sm:text-[8px] uppercase tracking-wider text-[var(--secondary)] font-bold truncate">System Alert</p>
+                                <span className="text-[7px] sm:text-[8px] text-[var(--text-muted)] shrink-0 ml-1">1m ago</span>
+                            </div>
+                            <p className="text-[10px] sm:text-xs font-bold text-[var(--text)] leading-tight mb-0.5 truncate">Cloud Mastery</p>
+                            <p className="text-[8px] sm:text-[9px] text-[var(--text-muted)] leading-snug hidden sm:block">Deployed with 99.9% uptime.</p>
                         </div>
-                    </div>
+                    </motion.div>
                 </motion.div>
             </motion.div>
 
@@ -179,28 +211,18 @@ export default function Hero() {
                 rounded-full blur-[100px] sm:blur-[140px] opacity-40 sm:opacity-60 -z-50"
             />
 
-            {/* === SCROLL INDICATOR === */}
+            {/* === SCROLL DOWN VERTICE / CHEVRON === */}
             <motion.div
-                className="absolute bottom-10 flex flex-col items-center gap-2
-                text-[var(--text-muted)] text-sm"
+                className="absolute bottom-12 sm:bottom-10 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--primary)] transition-colors cursor-pointer"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2 }}
+                animate={{ opacity: 1, y: [0, 8, 0] }}
+                transition={{ 
+                    delay: 1.5,
+                    y: { repeat: Infinity, duration: 1.5, ease: "easeInOut" }
+                }}
+                onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
             >
-                <span className="tracking-wide uppercase text-[12px]">
-                    Scroll Down
-                </span>
-                <motion.div
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{
-                        repeat: Infinity,
-                        duration: 1.6,
-                        ease: "easeInOut",
-                    }}
-                    className="w-[2px] h-8
-                    bg-[linear-gradient(to_bottom,var(--primary),var(--secondary))]
-                    rounded-full"
-                />
+                <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8" strokeWidth={1.5} />
             </motion.div>
 
             {/* === BOTTOM TAGLINE === */}

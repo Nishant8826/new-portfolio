@@ -39,13 +39,13 @@ const ThemeSelector = () => {
                 onClick={() => setOpen(!open)}
                 className="flex items-center gap-2 p-2 rounded-xl border border-indigo-300 bg-white shadow-md hover:shadow-lg transition"
             >
-                <BsPalette className="text-indigo-500" size={20} />
+                <BsPalette className="text-indigo-500" size={30} />
                 {/* <span className="font-semibold">{selected?.label}</span> */}
             </button>
 
             {/* Dropdown */}
             {open && (
-                <div className="absolute bottom-14 right-[-150px] w-48 bg-white shadow-xl rounded-xl z-50 p-2">
+                <div className="absolute bottom-14 left-[-200px] w-48 bg-white shadow-xl rounded-xl z-50 p-2">
                     {themes.map((theme) => (
                         <button
                             key={theme.id}

@@ -24,9 +24,6 @@ export default function Home() {
     return (
         <div className={`${theme} w-full transition-colors duration-300 bg-[linear-gradient(to_bottom,var(--bg),var(--bg-soft),var(--bg))]`}>
             <Navbar resumeUrl={resumeUrl} />
-            <div className="fixed left-5 bottom-5 z-50">
-                <ThemeSelector />
-            </div>
             <main>
                 <Hero />
                 <About />
@@ -37,6 +34,9 @@ export default function Home() {
                 <Footer />
             </main>
             <ScrollToTop />
+            <div className="fixed right-5 bottom-5 z-50">
+                <ThemeSelector />
+            </div>
         </div>
     );
 }
