@@ -6,7 +6,7 @@ const savedTheme = localStorage.getItem(STORAGE_KEY);
 const themeSlice = createSlice({
     name: "theme",
     initialState: {
-        activeTheme: savedTheme || "theme-aurora",
+        activeTheme: savedTheme || "theme-obsidian",
     },
 
     reducers: {
