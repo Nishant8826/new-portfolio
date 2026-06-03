@@ -32,9 +32,13 @@ const ThemeSelector = () => {
             <motion.button
                 whileHover={{ scale: 1.1, rotate: 10 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 p-3 rounded-full bg-[var(--bg-soft)] border border-[rgba(var(--border-rgb),0.15)] shadow-lg hover:shadow-[var(--primary)]/20 hover:border-[var(--primary)]/50 transition-colors duration-300"
+                className="p-3 rounded-full shadow-lg transition z-50 hover:scale-110"
+                style={{
+                    backgroundColor: "var(--primary)",
+                    color: "var(--text-on-primary)"
+                }}
             >
-                <BsPalette className="text-[var(--primary)]" size={24} />
+                <BsPalette size={24} />
             </motion.button>
 
             {/* Dropdown */}
