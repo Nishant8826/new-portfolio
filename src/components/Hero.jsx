@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
-import myPic from "../assets/my-pic.jpg";
+import myPic from "../assets/my-pic.png";
 import ThemeSelector from "./ThemeSelector";
 
 export default function Hero() {
@@ -139,7 +139,7 @@ export default function Hero() {
                     <motion.img
                         src={myPic}
                         alt="Profile"
-                        className="w-56 h-56 sm:w-72 sm:h-72 lg:w-[28rem] lg:h-[28rem] rounded-full object-cover
+                        className="w-56 h-56 sm:w-72 sm:h-72 lg:w-[28rem] lg:h-[30rem] rounded-full object-cover
                         border-4 border-[var(--bg)] shadow-2xl relative z-10"
                     />
 
